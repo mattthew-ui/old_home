@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Doctor Home</title>
 </head>
 <body>
     
+    <h1>Doctor Home Page</h1>
+
 </body>
 </html>
