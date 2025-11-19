@@ -20,14 +20,15 @@
     
     <h1>Daily Roster</h1>
 
-    <form>
+    <form method="GET">
         <label>Date</label><br>
-        <input type="date" value="<?php echo date('Y-m-d');?>">
+        <input type="date" name="date" value="{{ $date }}">
         <input type="submit" value="OK">
     </form>
 
     <br>
 
+    @if ($roster)
     <table>
         <tr>
             <th>Supervisor</th>
@@ -38,12 +39,12 @@
             <th>Caregiver 4</th>
         </tr>
         <tr>
-            <td>Name</td>
-            <td>Name</td>
-            <td>Name</td>
-            <td>Name</td>
-            <td>Name</td>
-            <td>Name</td>
+            <td>{{ $roster->supervisor->user->fname ?? '' }} {{ $roster->supervisor->user->lname ?? '' }}</td>
+            <td>{{ $roster->doctor->user->fname ?? '' }} {{ $roster->doctor->user->lname ?? '' }}</td>
+            <td>{{ optional($roster->caregiver1->user)->fname }} {{ optional($roster->caregiver1->user)->lname }}</td>
+            <td>{{ optional($roster->caregiver2->user)->fname }} {{ optional($roster->caregiver2->user)->lname }}</td>
+            <td>{{ optional($roster->caregiver3->user)->fname }} {{ optional($roster->caregiver3->user)->lname }}</td>
+            <td>{{ optional($roster->caregiver4->user)->fname }} {{ optional($roster->caregiver4->user)->lname }}</td>
         </tr>
         <tr>
             <td></td>
@@ -54,6 +55,9 @@
             <td>Patient Group</td>
         </tr>
     </table>
+    @else
+        <p>No roster found for this date.</p>
+    @endif
 
 </body>
 </html>
