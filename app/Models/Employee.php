@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\ProjectUser;
 
 class Employee extends Model
 {
@@ -12,6 +13,6 @@ class Employee extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'employee_id');
+        return $this->belongsTo(ProjectUser::class, 'employee_id');
     }
 }
