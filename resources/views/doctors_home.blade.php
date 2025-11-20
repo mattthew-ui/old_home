@@ -19,7 +19,7 @@
 </style>
 <body>
     
-    <h1>Doctor Home Page</h1>
+    <h1>Doctor Home</h1>
 
     <table>
         <tr>
