@@ -7,14 +7,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/daily-roster', function(){
-    return view('daily_roster');
-});
 Route::get('/daily-roster', [RosterController::class, 'dailyRoster']);
 
-Route::get('/new-roster', function(){
-    return view('new_roster');
-});
 Route::get('/new-roster', [RosterController::class, 'newRoster']);
 Route::post('/new-roster', [RosterController::class, 'storeRoster']);
 

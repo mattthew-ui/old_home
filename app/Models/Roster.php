@@ -9,6 +9,9 @@ class Roster extends Model
     protected $table = 'rosters';
     protected $primaryKey = 'roster_id';
     public $timestamps = false;
+    public $incrementing = true;
+    protected $keyType = 'int';
+
 
     protected $fillable = [
         'date',

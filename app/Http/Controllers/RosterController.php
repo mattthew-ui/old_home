@@ -50,8 +50,7 @@ class RosterController extends Controller
         $request->validate([
             'date' => 'required|date',
             'supervisor_id' => 'required',
-            'doctor_id' => 'required',
-            'caregiver_1_id' => 'required',
+            'doctor_id' => 'required'
         ]);
 
         Roster::create([
