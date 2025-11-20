@@ -10,6 +10,16 @@ class Roster extends Model
     protected $primaryKey = 'roster_id';
     public $timestamps = false;
 
+    protected $fillable = [
+        'date',
+        'supervisor_id',
+        'doctor_id',
+        'caregiver_1_id',
+        'caregiver_2_id',
+        'caregiver_3_id',
+        'caregiver_4_id'
+    ];
+
     public function supervisor()
     {
         return $this->belongsTo(Employee::class, 'supervisor_id');
