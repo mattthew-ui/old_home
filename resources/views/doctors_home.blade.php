@@ -24,8 +24,7 @@
     <table>
         <tr>
             <th>
-                Name
-                <input type="button" value="Next">
+                Patient Name
                 <br>
                 <input type="text" placeholder="Search">
                 <input type="button" value="OK">
@@ -36,7 +35,7 @@
                 <input type="text" placeholder="Search">
                 <input type="button" value="OK">
             </th>
-            <th>
+            <th style="width: 30%;">
                 Comment
                 <br>
                 <input type="text" placeholder="Search">
@@ -62,7 +61,10 @@
             </th>
         </tr>
         <tr>
-            <td>Info</td>
+            <td>
+                Info
+                <input type="button" value="View">
+            </td>
             <td>Info</td>
             <td>Info</td>
             <td>Info</td>
