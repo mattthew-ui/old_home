@@ -13,6 +13,9 @@
         border: 1px solid black;
         border-collapse: collapse;
     }
+    #new-prescription-div{
+        display: none;
+    }
 </style>
 <body>
 
@@ -39,11 +42,11 @@
 
     <br>
 
-    <input type="button" value="New Prescription">
+    <input type="button" onclick="toggleDiv()" value="New Prescription">
 
     <br><br>
 
-    <div {{-- style="visibility: hidden;" --}}>
+    <div id="new-prescription-div">
         <form>
             <table style="width: 70%;">
                 <tr>
@@ -70,6 +73,18 @@
             <input type="button" value="OK"><input type="button" value="Cancel">
         </form>
     </div>
+
+    <script>
+        function toggleDiv(){
+            let div = document.getElementById("new-prescription-div");
+            if(div.style.display === "none"){
+                div.style.display = "block";
+            }
+            else{
+                div.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>

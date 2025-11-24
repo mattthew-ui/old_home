@@ -23,6 +23,7 @@
 
     <h1>Doctor Home</h1>
 
+    <h2>Appointments</h2>
     <table>
         <tr>
             <th>
@@ -92,7 +93,10 @@
             <th>Date</th>
         </tr>
         <tr>
-            <td>Info</td>
+            <td>
+                Info
+                <button type="button" onclick="window.location.href='/doctor/patient-of-doctor';">View</button>
+            </td>
             <td>Info</td>
         </tr>
     </table>
