@@ -44,12 +44,14 @@
 
     <br>
 
-    <input type="button" onclick="toggleDiv()" value="New Prescription">
+    <input type="button" onclick="toggleDiv()" value="New Prescription"
+    {{ $hasAppointmentToday ? '' : 'disabled style=opacity:0.5;cursor:not-allowed;' }}>
 
     <br><br>
 
     <div id="new-prescription-div">
-        <form>
+        <form method="POST" action="/doctor/patient/{{ $patient->patient_id }}/new-prescription">
+            @csrf
             <table style="width: 70%;">
                 <tr>
                     <th style="width: 30%;">Comment</th>
@@ -59,20 +61,21 @@
                 </tr>
                 <tr style="text-align: center;">
                     <td>
-                        <textarea></textarea>
+                        <textarea name="comment"></textarea>
                     </td>
                     <td>
-                        <textarea></textarea>
+                        <textarea name="morning_medicine"></textarea>
                     </td>
                     <td>
-                        <textarea></textarea>
+                        <textarea name="afternoon_medicine"></textarea>
                     </td>
                     <td>
-                        <textarea></textarea>
+                        <textarea name="evening_medicine"></textarea>
                     </td>
                 </tr>
             </table>
-            <input type="button" value="OK"><input type="button" value="Cancel">
+            <input type="submit" value="OK">
+            <input type="button" value="Cancel" onclick="toggleDiv()">
         </form>
     </div>
 

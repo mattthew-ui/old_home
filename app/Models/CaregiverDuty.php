@@ -10,6 +10,20 @@ class CaregiverDuty extends Model
     protected $primaryKey = "duty_id";
     public $timestamps = false;
 
+    protected $fillable = [
+        'patient_id',
+        'caregiver_id',
+        'doctor_id',
+        'date',
+        'morning_medicine',
+        'afternoon_medicine',
+        'evening_medicine',
+        'breakfast',
+        'lunch',
+        'dinner',
+        'comment',
+    ];
+
     public function patient()
     {
         return $this->belongsTo(Patient::class, "patient_id");

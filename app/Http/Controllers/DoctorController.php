@@ -30,6 +30,7 @@ class DoctorController extends Controller
     public function patientPage($patientId)
     {
         $patient = Patient::with("user")->findOrFail($patientId);
+        $today = date('Y-m-d');
 
         $prescriptions = CaregiverDuty::where("patient_id", $patientId)
             ->orderBy("date", "desc")
@@ -39,6 +40,39 @@ class DoctorController extends Controller
             ->orderBy("date", "desc")
             ->get();
 
-        return view("patient_of_doctor", compact("patient", "prescriptions", "appointments"));
+        $hasAppointmentToday = DoctorsAppointment::where('patient_id', $patientId)
+            ->where('doctor_id', 2) // Note to self: replaceable when authentication is added 
+            ->where('date', $today)
+            ->exists();
+
+        return view("patient_of_doctor", compact("patient", "prescriptions", "appointments", "hasAppointmentToday"));
+    }
+
+    public function storePrescription(Request $request, $patientId)
+    {
+        $doctorEmployeeId = 2; // placeholder for now
+
+        $request->validate([
+            'comment' => 'required|string',
+            'morning_medicine' => 'nullable|string',
+            'afternoon_medicine' => 'nullable|string',
+            'evening_medicine' => 'nullable|string',
+        ]);
+
+        CaregiverDuty::create([
+            'patient_id' => $patientId,
+            'caregiver_id' => 3, // temp placeholder
+            'doctor_id' => $doctorEmployeeId,
+            'date' => date('Y-m-d'),
+            'morning_medicine' => $request->morning_medicine ? 1 : 0,
+            'afternoon_medicine' => $request->afternoon_medicine ? 1 : 0,
+            'evening_medicine' => $request->evening_medicine ? 1 : 0,
+            'breakfast' => 0,
+            'lunch' => 0,
+            'dinner' => 0,
+            'comment' => $request->comment,
+        ]);
+
+        return redirect('/doctor/patient/' . $patientId);
     }
 }

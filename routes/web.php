@@ -11,3 +11,4 @@ Route::post('/new-roster', [RosterController::class, 'storeRoster']);
 
 Route::get('/doctor/home', [DoctorController::class, 'home']);
 Route::get('/doctor/patient/{id}', [DoctorController::class, 'patientPage']);
+Route::post('/doctor/patient/{id}/new-prescription', [DoctorController::class, 'storePrescription']);
