@@ -94,13 +94,15 @@
             <th>Patient</th>
             <th>Date</th>
         </tr>
+        @foreach($appointments as $a)
         <tr>
             <td>
-                Info
-                <button onclick="window.location.href='/doctor/patient/{{ $p->patient_id }}'">View</button>
+                {{ $a->patient->user->fname }} {{ $a->patient->user->lname }}
+                <button onclick="window.location.href='/doctor/patient/{{ $a->patient_id }}'">View</button>
             </td>
-            <td>Info</td>
+            <td>{{ $a->date }}</td>
         </tr>
+        @endforeach
     </table>
 
 </body>

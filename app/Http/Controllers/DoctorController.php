@@ -19,7 +19,7 @@ class DoctorController extends Controller
             ->with("user")
             ->get();
         
-        $appointments = DoctorsAppointment::where("doctor_id", $doctorEmployeeId)
+        $appointments = CaregiverDuty::where("doctor_id", $doctorEmployeeId)
             ->with("patient.user")
             ->orderBy("date", "desc")
             ->get();
