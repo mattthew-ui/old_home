@@ -63,17 +63,19 @@
                 <input type="button" value="OK">
             </th>
         </tr>
+        @foreach($appointments as $a)
         <tr>
             <td>
-                Info
-                <button type="button" onclick="window.location.href='/doctor/patient-of-doctor';">View</button>
+                {{ $a->patient->user->fname }} {{ $a->patient->user->lname }}
+                <button onclick="window.location.href='/doctor/patient/{{ $a->patient_id }}'">View</button>
             </td>
-            <td>Info</td>
-            <td>Info</td>
-            <td>Info</td>
-            <td>Info</td>
-            <td>Info</td>
+            <td>{{ $a->date }}</td>
+            <td>{{ $a->comment ?? '—' }}</td>
+            <td>{{ $a->morning_medicine ? 'Yes' : 'No' }}</td>
+            <td>{{ $a->afternoon_medicine ? 'Yes' : 'No' }}</td>
+            <td>{{ $a->evening_medicine ? 'Yes' : 'No' }}</td>
         </tr>
+        @endforeach
     </table>
 
     <br>
@@ -95,7 +97,7 @@
         <tr>
             <td>
                 Info
-                <button type="button" onclick="window.location.href='/doctor/patient-of-doctor';">View</button>
+                <button onclick="window.location.href='/doctor/patient/{{ $p->patient_id }}'">View</button>
             </td>
             <td>Info</td>
         </tr>

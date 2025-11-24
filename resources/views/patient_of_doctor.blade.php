@@ -31,13 +31,15 @@
             <th>Afternoon Medicine</th>
             <th>Evening Medicine</th>
         </tr>
+        @foreach($prescriptions as $p)
         <tr>
-            <td>Info</td>
-            <td>Info</td>
-            <td>Info</td>
-            <td>Info</td>
-            <td>Info</td>
+            <td>{{ $p->date }}</td>
+            <td>{{ $p->comment }}</td>
+            <td>{{ $p->morning_medicine ? 'Yes' : 'No' }}</td>
+            <td>{{ $p->afternoon_medicine ? 'Yes' : 'No' }}</td>
+            <td>{{ $p->evening_medicine ? 'Yes' : 'No' }}</td>
         </tr>
+        @endforeach
     </table>
 
     <br>
