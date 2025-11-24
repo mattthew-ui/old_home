@@ -12,6 +12,10 @@ Route::get('/doctor/home', function(){
     return view('doctors_home');
 });
 
+Route::get('/doctor/patient-of-doctor', function(){
+    return view('patient_of_doctor');
+});
+
 Route::get('/caregiver/home', function(){
     return view('caregivers_home');
 });

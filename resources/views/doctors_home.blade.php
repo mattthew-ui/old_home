@@ -19,6 +19,8 @@
 </style>
 <body>
     
+    <button type="button" onclick="window.location.href='/daily-roster';">Daily Roster</button>
+
     <h1>Doctor Home</h1>
 
     <table>
@@ -63,7 +65,7 @@
         <tr>
             <td>
                 Info
-                <input type="button" value="View">
+                <button type="button" onclick="window.location.href='/doctor/patient-of-doctor';">View</button>
             </td>
             <td>Info</td>
             <td>Info</td>
@@ -76,7 +78,8 @@
     <br>
 
     <form>
-        <label for="date">Appointments</label><br>
+        <h2>Upcoming Appointments</h2>
+        <label for="date">Till Date</label><br>
         <input type="date" name="date" id="date">
         <input type="button" value="OK">
     </form>
