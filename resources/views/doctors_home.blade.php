@@ -80,11 +80,11 @@
 
     <br>
 
-    <form>
+    <form method="GET" action="/doctor/home">
         <h2>Upcoming Appointments</h2>
         <label for="date">Till Date</label><br>
-        <input type="date" name="date" id="date">
-        <input type="button" value="OK">
+        <input type="date" name="date" id="date" value="{{ $tillDate ?? '' }}">
+        <input type="submit" value="OK">
     </form>
 
     <br>
@@ -94,7 +94,7 @@
             <th>Patient</th>
             <th>Date</th>
         </tr>
-        @foreach($appointments as $a)
+        @foreach($upcomingAppointments as $a)
         <tr>
             <td>
                 {{ $a->patient->user->fname }} {{ $a->patient->user->lname }}

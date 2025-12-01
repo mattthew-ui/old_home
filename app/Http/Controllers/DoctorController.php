@@ -11,20 +11,31 @@ use App\Models\CaregiverDuty;
 
 class DoctorController extends Controller
 {
-    public function home()
+    public function home(Request $request)
     {
         $doctorEmployeeId = 2; // Replace when loigin system is added
+        $tillDate = $request->input('date');
 
-        $patients = Patient::where("doctor_assigned_id", $doctorEmployeeId)
-            ->with("user")
-            ->get();
-        
         $appointments = CaregiverDuty::where("doctor_id", $doctorEmployeeId)
             ->with("patient.user")
             ->orderBy("date", "desc")
             ->get();
-        
-        return view("doctors_home", compact("patients", "appointments"));
+
+        $upcomingAppointmentsQuery = DoctorsAppointment::where("doctor_id", $doctorEmployeeId)
+            ->with("patient.user")
+            ->orderBy("date", "asc");
+
+        if($tillDate){
+            $upcomingAppointmentsQuery->whereBetween("date", [date("Y-m-d"), $tillDate]);
+        }
+
+        $upcomingAppointments = $upcomingAppointmentsQuery->get();
+
+        $patients = Patient::where("doctor_assigned_id", $doctorEmployeeId)
+            ->with("user")
+            ->get();
+
+        return view("doctors_home", compact("patients", "appointments", "upcomingAppointments", "tillDate"));
     }
 
     public function patientPage($patientId)
