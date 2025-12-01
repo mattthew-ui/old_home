@@ -16,10 +16,31 @@ class DoctorController extends Controller
         $doctorEmployeeId = 2; // Replace when loigin system is added
         $tillDate = $request->input('date');
 
-        $appointments = CaregiverDuty::where("doctor_id", $doctorEmployeeId)
+        $appointmentsQuery = CaregiverDuty::where("doctor_id", $doctorEmployeeId)
             ->with("patient.user")
-            ->orderBy("date", "desc")
-            ->get();
+            ->orderBy("date", "desc");
+        
+        if($request->search_patient){
+            $appointmentsQuery->whereHas("patient.user", function($q) use ($request){
+                $q->where("fname", "like", "%".$request->search_patient."%")
+                ->orWhere("lname", "like", "%".$request->search_patient."%");
+            });
+        }
+        if($request->search_date){
+            $appointmentsQuery->where("date", "like", "%".$request->search_date."%");
+        }
+        if($request->search_comment){
+            $appointmentsQuery->where("comment", "like", "%".$request->search_comment."%");
+        }
+        if($request->search_morning){
+            $appointmentsQuery->where("morning_medicine", strtolower($request->search_morning) === "yes" ? 1 : 0);
+        }
+        if($request->search_afternoon){
+            $appointmentsQuery->where("afternoon_medicine", strtolower($request->search_afternoon) === "yes" ? 1 : 0);
+        }
+        if($request->search_evening){
+            $appointmentsQuery->where("evening_medicine", strtolower($request->search_evening) === "yes" ? 1 : 0);
+        }
 
         $upcomingAppointmentsQuery = DoctorsAppointment::where("doctor_id", $doctorEmployeeId)
             ->with("patient.user")
@@ -34,6 +55,8 @@ class DoctorController extends Controller
         $patients = Patient::where("doctor_assigned_id", $doctorEmployeeId)
             ->with("user")
             ->get();
+
+        $appointments = $appointmentsQuery->get();
 
         return view("doctors_home", compact("patients", "appointments", "upcomingAppointments", "tillDate"));
     }

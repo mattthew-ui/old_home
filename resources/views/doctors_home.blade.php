@@ -29,38 +29,50 @@
             <th>
                 Patient Name
                 <br>
-                <input type="text" placeholder="Search">
-                <input type="button" value="OK">
+                <form method="GET" action="/doctor/home">
+                    <input type="text" name="search_patient" value="{{ request('search_patient') }}" placeholder="Search">
+                    <button type="submit">OK</button>
+                </form>
             </th>
             <th>
                 Date
                 <br>
-                <input type="text" placeholder="Search">
-                <input type="button" value="OK">
+                <form method="GET" action="/doctor/home">
+                    <input type="text" name="search_date" value="{{ request('search_date') }}" placeholder="Search">
+                    <button type="submit">OK</button>
+                </form>
             </th>
             <th style="width: 30%;">
                 Comment
                 <br>
-                <input type="text" placeholder="Search">
-                <input type="button" value="OK">
+                <form method="GET" action="/doctor/home">
+                    <input type="text" name="search_comment" value="{{ request('search_comment') }}" placeholder="Search">
+                    <button type="submit">OK</button>
+                </form>
             </th>
             <th>
                 Morning Medicine
                 <br>
-                <input type="text" placeholder="Search">
-                <input type="button" value="OK">
+                <form method="GET" action="/doctor/home">
+                    <input type="text" name="search_morning" value="{{ request('search_morning') }}" placeholder="Search">
+                    <button type="submit">OK</button>
+                </form>
             </th>
             <th>
                 Afternoon Medicine
                 <br>
-                <input type="text" placeholder="Search">
-                <input type="button" value="OK">
+                <form method="GET" action="/doctor/home">
+                    <input type="text" name="search_afternoon" value="{{ request('search_afternoon') }}" placeholder="Search">
+                    <button type="submit">OK</button>
+                </form>
             </th>
             <th>
                 Evening Medicine
                 <br>
-                <input type="text" placeholder="Search">
-                <input type="button" value="OK">
+                <form method="GET" action="/doctor/home">
+                    <input type="text" name="search_evening" value="{{ request('search_evening') }}" placeholder="Search">
+                    <button type="submit">OK</button>
+                </form
             </th>
         </tr>
         @foreach($appointments as $a)
