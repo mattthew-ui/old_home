@@ -44,7 +44,7 @@ class DoctorController extends Controller
 
         $upcomingAppointmentsQuery = DoctorsAppointment::where("doctor_id", $doctorEmployeeId)
             ->with("patient.user")
-            ->orderBy("date", "asc");
+            ->orderBy("date", "desc");
 
         if($tillDate){
             $upcomingAppointmentsQuery->whereBetween("date", [date("Y-m-d"), $tillDate]);
