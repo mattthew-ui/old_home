@@ -6,7 +6,6 @@
     <title>Doctor Appointment</title>
 </head>
 <body>
-    <button type="button" onclick="window.location.href='/new-roster';">New Roster</button>
     <button type="button" onclick="window.location.href='/daily-roster';">Daily Roster</button>
 
     <h1>Doctor's Appointment</h1>
