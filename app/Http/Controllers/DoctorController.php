@@ -109,4 +109,41 @@ class DoctorController extends Controller
 
         return redirect('/doctor/patient/' . $patientId);
     }
+
+    public function createAppointmentPage()
+    {
+        $doctors = Employee::where('role_id', 3)->with('user')->get();
+
+        return view('doctors_appointment', compact('doctors'));
+    }
+
+    public function storeAppointment(Request $request)
+    {
+        $request->validate([
+            'patient_id' => 'required|integer',
+            'doctor_id' => 'required|integer',
+            'date' => 'required|date',
+        ]);
+
+        DoctorsAppointment::create([
+            'patient_id' => $request->patient_id,
+            'doctor_id' => $request->doctor_id,
+            'date' => $request->date,
+        ]);
+
+        // Redirect to admin/supervisor home later
+        return redirect('/doctor-appointment')->with('success', 'Appointment Created!');
+    }
+
+    public function getPatientName($id)
+    {
+        $patient = Patient::with('user')->find($id);
+        if(!$patient){
+            return response()->json(['name' => null]);
+        }
+
+        return response()->json([
+            'name' => $patient->user->fname . ' ' . $patient->user->lname
+        ]);
+    }
 }

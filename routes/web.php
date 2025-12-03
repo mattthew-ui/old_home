@@ -13,6 +13,6 @@ Route::get('/doctor/home', [DoctorController::class, 'home']);
 Route::get('/doctor/patient/{id}', [DoctorController::class, 'patientPage']);
 Route::post('/doctor/patient/{id}/new-prescription', [DoctorController::class, 'storePrescription']);
 
-Route::get('doctor-appointment', function (){
-    return view('doctors_appointment');
-});
+Route::get('/doctor-appointment', [DoctorController::class, 'createAppointmentPage']);
+Route::get('/get-patient-name/{id}', [DoctorController::class, 'getPatientName']);
+Route::post('/doctor-appointment', [DoctorController::class, 'storeAppointment']);

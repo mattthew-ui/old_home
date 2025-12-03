@@ -10,6 +10,12 @@ class DoctorsAppointment extends Model
     protected $primaryKey = "appointment_id";
     public $timestamps = false;
 
+    protected $fillable = [
+        'patient_id',
+        'doctor_id',
+        'date',
+    ];
+
     public function patient()
     {
         return $this->belongsTo(Patient::class, "patient_id");
