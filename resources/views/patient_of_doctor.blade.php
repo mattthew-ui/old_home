@@ -16,6 +16,9 @@
     #new-prescription-div{
         display: none;
     }
+    .center-check{
+        text-align: center;
+    }
 </style>
 <body>
 
@@ -35,9 +38,15 @@
         <tr>
             <td>{{ $p->date }}</td>
             <td>{{ $p->comment }}</td>
-            <td>{{ $p->morning_medicine ? 'Yes' : 'No' }}</td>
-            <td>{{ $p->afternoon_medicine ? 'Yes' : 'No' }}</td>
-            <td>{{ $p->evening_medicine ? 'Yes' : 'No' }}</td>
+            <td class="center-check">
+                <input type="checkbox" {{ $p->morning_medicine ? 'checked' : '' }} disabled>
+            </td>
+            <td class="center-check">
+                <input type="checkbox" {{ $p->afternoon_medicine ? 'checked' : '' }} disabled>
+            </td>
+            <td class="center-check">
+                <input type="checkbox" {{ $p->evening_medicine ? 'checked' : '' }} disabled>
+            </td>
         </tr>
         @endforeach
     </table>
