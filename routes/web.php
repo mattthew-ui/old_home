@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RosterController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\CaregiverController;
 
 Route::get('/daily-roster', [RosterController::class, 'dailyRoster']);
 
@@ -17,6 +18,5 @@ Route::get('/doctor-appointment', [DoctorController::class, 'createAppointmentPa
 Route::get('/get-patient-name/{id}', [DoctorController::class, 'getPatientName']);
 Route::post('/doctor-appointment', [DoctorController::class, 'storeAppointment']);
 
-Route::get('/caregiver/home', function () {
-    return view('caregivers_home');
-});
+Route::get('/caregiver/home', [CaregiverController::class, 'home']);
+Route::post('/caregiver/update', [CaregiverController::class, 'updateDuties']);
