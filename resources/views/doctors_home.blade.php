@@ -83,9 +83,9 @@
             </td>
             <td>{{ $a->date }}</td>
             <td>{{ $a->comment ?? '—' }}</td>
-            <td>{{ $a->morning_medicine ? 'Yes' : 'No' }}</td>
-            <td>{{ $a->afternoon_medicine ? 'Yes' : 'No' }}</td>
-            <td>{{ $a->evening_medicine ? 'Yes' : 'No' }}</td>
+            <td><input type="checkbox" @if($a->morning_medicine) checked @endif disabled></td>
+            <td><input type="checkbox" @if($a->afternoon_medicine) checked @endif disabled></td>
+            <td><input type="checkbox" @if($a->evening_medicine) checked @endif disabled></td>
         </tr>
         @endforeach
     </table>

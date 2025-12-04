@@ -24,7 +24,6 @@
     <h1>Caregiver Home Page</h1>
 
     <h2>List of Patient Duties Today</h2>
-
     <table>
         <tr>
             <th style="width: 30%;">Patient Name</th>
@@ -37,12 +36,12 @@
         </tr>
         <tr>
             <td>Info</td>
-            <td>Info</td>
-            <td>Info</td>
-            <td>Info</td>
-            <td>Info</td>
-            <td>Info</td>
-            <td>Info</td>
+            <td><input type="checkbox" disabled></td>
+            <td><input type="checkbox" disabled></td>
+            <td><input type="checkbox" disabled></td>
+            <td><input type="checkbox" disabled></td>
+            <td><input type="checkbox" disabled></td>
+            <td><input type="checkbox" disabled></td>
         </tr>
     </table>
 
