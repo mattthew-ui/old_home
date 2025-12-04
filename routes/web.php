@@ -16,3 +16,7 @@ Route::post('/doctor/patient/{id}/new-prescription', [DoctorController::class, '
 Route::get('/doctor-appointment', [DoctorController::class, 'createAppointmentPage']);
 Route::get('/get-patient-name/{id}', [DoctorController::class, 'getPatientName']);
 Route::post('/doctor-appointment', [DoctorController::class, 'storeAppointment']);
+
+Route::get('/caregiver/home', function () {
+    return view('caregivers_home');
+});
