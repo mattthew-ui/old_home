@@ -16,6 +16,9 @@
     input[type="text"]{
         width: 30%;
     }
+    .center-check{
+        text-align: center;
+    }
 </style>
 <body>
     
@@ -83,9 +86,9 @@
             </td>
             <td>{{ $a->date }}</td>
             <td>{{ $a->comment ?? '—' }}</td>
-            <td><input type="checkbox" @if($a->morning_medicine) checked @endif disabled></td>
-            <td><input type="checkbox" @if($a->afternoon_medicine) checked @endif disabled></td>
-            <td><input type="checkbox" @if($a->evening_medicine) checked @endif disabled></td>
+            <td class="center-check"><input type="checkbox" @if($a->morning_medicine) checked @endif disabled></td>
+            <td class="center-check"><input type="checkbox" @if($a->afternoon_medicine) checked @endif disabled></td>
+            <td class="center-check"><input type="checkbox" @if($a->evening_medicine) checked @endif disabled></td>
         </tr>
         @endforeach
     </table>

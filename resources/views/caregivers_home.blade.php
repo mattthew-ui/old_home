@@ -16,6 +16,9 @@
     input[type="text"]{
         width: 30%;
     }
+    .center-check{
+        text-align: center;
+    }
 </style>
 <body>
 
@@ -36,14 +39,19 @@
         </tr>
         <tr>
             <td>Info</td>
-            <td><input type="checkbox" disabled></td>
-            <td><input type="checkbox" disabled></td>
-            <td><input type="checkbox" disabled></td>
-            <td><input type="checkbox" disabled></td>
-            <td><input type="checkbox" disabled></td>
-            <td><input type="checkbox" disabled></td>
+            <td class="center-check"><input type="checkbox" disabled></td>
+            <td class="center-check"><input type="checkbox" disabled></td>
+            <td class="center-check"><input type="checkbox" disabled></td>
+            <td class="center-check"><input type="checkbox" disabled></td>
+            <td class="center-check"><input type="checkbox" disabled></td>
+            <td class="center-check"><input type="checkbox" disabled></td>
         </tr>
     </table>
+
+    <br>
+
+    <input type="submit" value="OK">
+    <button type="button" onclick="window.location.href='/daily-roster';">Cancel</button>
 
 </body>
 </html>
