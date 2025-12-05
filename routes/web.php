@@ -20,3 +20,14 @@ Route::post('/doctor-appointment', [DoctorController::class, 'storeAppointment']
 
 Route::get('/caregiver/home', [CaregiverController::class, 'home']);
 Route::post('/caregiver/update', [CaregiverController::class, 'updateDuties']);
+
+Route::get('/AdminHomePage', [AdminHomePage::class, 'AdminHomePage'])
+    -> name('AdminHomePage');
+
+Route::get('/payment', [Payment::class, 'paymentPage']);
+
+Route::get('/AdminApproval', [AdminApproval::class, 'index'])
+    -> name('AdminApproval');
+
+    Route::post('/AdminApproval', [AdminApproval::class, 'userStatus'])
+        -> name('userAppStatus');
