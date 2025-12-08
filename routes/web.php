@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdditionalPatientInfo;
 use App\Http\Controllers\RosterController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\CaregiverController;
@@ -16,6 +17,9 @@ Route::post('/new-roster', [RosterController::class, 'storeRoster']);
 Route::get('/doctor/home', [DoctorController::class, 'home']);
 Route::get('/doctor/patient/{id}', [DoctorController::class, 'patientPage']);
 Route::post('/doctor/patient/{id}/new-prescription', [DoctorController::class, 'storePrescription']);
+
+Route::get('/Additional_info', [AdditionalPatientInfo::class, 'index'])
+    -> name('Additional_Info');
 
 Route::get('/doctor-appointment', [DoctorController::class, 'createAppointmentPage']);
 Route::get('/get-patient-name/{id}', [DoctorController::class, 'getPatientName']);
