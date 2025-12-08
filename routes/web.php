@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RosterController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\CaregiverController;
+use App\Http\Controllers\AdminApproval;
 
 Route::get('/daily-roster', [RosterController::class, 'dailyRoster']);
 
@@ -21,13 +22,21 @@ Route::post('/doctor-appointment', [DoctorController::class, 'storeAppointment']
 Route::get('/caregiver/home', [CaregiverController::class, 'home']);
 Route::post('/caregiver/update', [CaregiverController::class, 'updateDuties']);
 
-Route::get('/AdminHomePage', [AdminHomePage::class, 'AdminHomePage'])
-    -> name('AdminHomePage');
+// Route::get('/AdminHomePage', [AdminHomePage::class, 'AdminHomePage'])
+//     -> name('AdminHomePage');
 
 Route::get('/payment', [Payment::class, 'paymentPage']);
 
 Route::get('/AdminApproval', [AdminApproval::class, 'index'])
     -> name('AdminApproval');
 
-    Route::post('/AdminApproval', [AdminApproval::class, 'userStatus'])
-        -> name('userAppStatus');
+// Route::post('/AdminApproval', [AdminApproval::class, 'userStatus'])
+//     -> name('userAppStatus');
+
+Route::get('/AdminHomePage', function () {
+    return view('AdminHomePage');
+});
+
+Route::get('/AdminHomePage', function () {
+    return view('AdminHomePage');
+});

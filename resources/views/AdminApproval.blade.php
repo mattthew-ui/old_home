@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    @vite(['resources/css/app.css'])
+    {{-- @vite(['resources/css/app.css']) --}}
     <title>Admin Approval</title>
 </head>
 <body>
