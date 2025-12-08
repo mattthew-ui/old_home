@@ -5,6 +5,7 @@ use App\Http\Controllers\RosterController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\CaregiverController;
 use App\Http\Controllers\AdminApproval;
+use App\Http\Controllers\PatientController;
 
 Route::get('/daily-roster', [RosterController::class, 'dailyRoster']);
 
@@ -40,3 +41,5 @@ Route::get('/AdminHomePage', function () {
 Route::get('/AdminHomePage', function () {
     return view('AdminHomePage');
 });
+
+Route::get('/patient/home', [PatientController::class, 'home']);
