@@ -10,9 +10,10 @@ class Employee extends Model
     protected $table = 'employees';
     protected $primaryKey = 'employee_id';
     public $timestamps = false;
+    protected $fillable = ['role_id', 'salary'];
 
     public function user()
     {
-        return $this->belongsTo(ProjectUser::class, 'employee_id');
+        return $this->belongsTo(ProjectUser::class, 'employee_id', 'user_id');
     }
 }

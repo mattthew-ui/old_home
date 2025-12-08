@@ -3,82 +3,71 @@
 <head> 
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>New Roster</title> 
+    <title>Create New Roster</title>
 </head> 
 <body> 
-    <button type="button" onclick="window.location.href='/new-roster';">New Roster</button> 
-    <button type="button" onclick="window.location.href='/daily-roster';">Daily Roster</button> 
+    <h1>Create New Roster</h1>
 
-    <h1>New Roster</h1> 
+    @if(session('success'))
+        <p style="color: green;">{{ session('success') }}</p>
+    @endif
 
-    <form method="POST" action="/new-roster"> 
-        @csrf 
-        <label for="date">Date</label><br> 
-        <input type="date" id="date" name="date" value="{{ date('Y-m-d') }}" required><br><br> 
+    <form action="{{ route('roster.store') }}" method="POST">
+        @csrf
+        <label for="date">Date:</label>
+        <input type="date" name="date" required><br><br>
 
-        <label for="supervisor_id">Supervisor</label><br> 
-        <select id="supervisor_id" name="supervisor_id" required> 
-            <option value="" disabled selected>--</option> 
-            @foreach ($supervisors as $s) 
-                <option value="{{ $s->employee_id }}"> 
-                    {{ $s->user->fname }} {{ $s->user->lname }} 
-                </option> 
-            @endforeach 
-        </select><br><br> 
+        <label>Supervisor:</label>
+        <select name="supervisor_id" required>
+            <option value=""> Select Supervisor </option>
+            @foreach($supervisors as $sup)
+                <option value="{{ $sup->employee_id }}">{{ $sup->fname }} {{ $sup->lname }}</option>
+            @endforeach
+        </select><br><br>
 
-        <label for="doctor_id">Doctor</label><br> 
-        <select id="doctor_id" name="doctor_id" required> 
-            <option value="" disabled selected>--</option> 
-            @foreach ($doctors as $d) 
-                <option value="{{ $d->employee_id }}"> 
-                    {{ $d->user->fname }} {{ $d->user->lname }} 
-                </option> 
-            @endforeach 
-        </select><br><br> 
+        <label>Doctor:</label>
+        <select name="doctor_id" required>
+            <option value=""> Select Doctor </option>
+            @foreach($doctors as $doc)
+                <option value="{{ $doc->employee_id }}">{{ $doc->fname }} {{ $doc->lname }}</option>
+            @endforeach
+        </select><br><br>
 
-        <label for="caregiver_1_id">Caregiver 1</label><br> 
-        <select id="caregiver_1_id" name="caregiver_1_id"> 
-            <option value="" disabled selected>--</option> 
-            @foreach ($caregivers as $cg) 
-                <option value="{{ $cg->employee_id }}"> 
-                    {{ $cg->user->fname }} {{ $cg->user->lname }} 
-                </option> 
-            @endforeach 
-        </select><br><br> 
+        @foreach(['A', 'B', 'C', 'D'] as $group)
+            <h3>Group {{ $group }}</h3>
+            <label>Caregiver:</label>
+            <select class="caregiver-select" name="groups[{{ $group }}][caregiver_id]" required>
+                <option value=""> Select Caregiver </option>
+                @foreach($caregivers as $care)
+                    <option value="{{ $care->employee_id }}">{{ $care->fname }} {{ $care->lname }}</option>
+                @endforeach
+            </select>
+            <hr>
+        @endforeach
 
-        <label for="caregiver_2_id">Caregiver 2</label><br> 
-        <select id="caregiver_2_id" name="caregiver_2_id"> 
-            <option value="" disabled selected>--</option> 
-            @foreach ($caregivers as $cg) 
-                <option value="{{ $cg->employee_id }}"> 
-                    {{ $cg->user->fname }} {{ $cg->user->lname }} 
-                </option> 
-            @endforeach 
-        </select><br><br> 
+        <button type="submit">Save Rosters</button>
+    </form>
 
-        <label for="caregiver_3_id">Caregiver 3</label><br> 
-        <select id="caregiver_3_id" name="caregiver_3_id"> 
-            <option value="" disabled selected>--</option> 
-            @foreach ($caregivers as $cg) 
-                <option value="{{ $cg->employee_id }}"> 
-                    {{ $cg->user->fname }} {{ $cg->user->lname }} 
-                </option> 
-            @endforeach 
-        </select><br><br> 
-
-        <label for="caregiver_4_id">Caregiver 4</label><br> 
-        <select id="caregiver_4_id" name="caregiver_4_id"> 
-            <option value="" disabled selected>--</option> 
-            @foreach ($caregivers as $cg) 
-                <option value="{{ $cg->employee_id }}"> 
-                    {{ $cg->user->fname }} {{ $cg->user->lname }} 
-                </option> 
-            @endforeach 
-        </select><br><br> 
-
-        <input type="submit" value="OK"> 
-        <button type="button" onclick="window.location.href='/daily-roster';">Cancel</button> 
-    </form> 
+    <script>
+        const selects = document.querySelectorAll('.caregiver-select');
+        selects.forEach(select => {
+            select.addEventListener('change', function() {
+                const selectedValues = Array.from(selects).map(s => s.value).filter(v => v !== '');
+                
+                selects.forEach(s => {
+                    const currentValue = s.value;
+                    Array.from(s.options).forEach(option => {
+                        if(option.value === '') return;
+                        if(option.value !== currentValue && selectedValues.includes(option.value)){
+                            option.disabled = true;
+                        } else {
+                            option.disabled = false;
+                        }
+                    });
+                });
+            });
+        });
+    </script> 
 
 </body> 
 </html>
