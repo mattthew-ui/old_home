@@ -2,13 +2,6 @@
 <html>
 <head>
     <title>Missed Activities Report</title>
-    <style>
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
-        th { background-color: #f2f2f2; }
-        .missed { color: red; font-weight: bold; }
-        .completed { color: green; }
-    </style>
 </head>
 <body>
     <h1>Missed Activities Report</h1>

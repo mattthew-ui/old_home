@@ -44,7 +44,6 @@
 
     <script>
         $(document).ready(function() {
-            // Validate patient ID in real-time
             $('#patient_id').on('blur', function() {
                 let patientId = $(this).val();
                 if(patientId){
@@ -65,7 +64,6 @@
                 }
             });
 
-            // Populate doctors based on selected date
             $('#appointment_date').on('change', function() {
                 let selectedDate = $(this).val();
                 if(selectedDate) {
@@ -89,7 +87,6 @@
                 }
             });
 
-            // Prevent form submission if patient is invalid
             $('#appointment_form').on('submit', function(e) {
                 if($('#patient_status').hasClass('error-message')){
                     e.preventDefault();

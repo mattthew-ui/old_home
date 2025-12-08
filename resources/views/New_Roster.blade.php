@@ -56,7 +56,7 @@
                 selects.forEach(s => {
                     const currentValue = s.value;
                     Array.from(s.options).forEach(option => {
-                        if(option.value === '') return; // keep the empty option
+                        if(option.value === '') return;
                         if(option.value !== currentValue && selectedValues.includes(option.value)){
                             option.disabled = true;
                         } else {
