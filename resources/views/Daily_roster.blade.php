@@ -49,10 +49,10 @@
         <tr> 
             <td></td> 
             <td></td> 
-            <td>Patient Group</td> 
-            <td>Patient Group</td> 
-            <td>Patient Group</td> 
-            <td>Patient Group</td> 
+            <td>{{ implode(', ', $patientGroups[$roster->caregiver_1_id] ?? []) ?: '' }}</td> 
+            <td>{{ implode(', ', $patientGroups[$roster->caregiver_2_id] ?? []) ?: '' }}</td> 
+            <td>{{ implode(', ', $patientGroups[$roster->caregiver_3_id] ?? []) ?: '' }}</td> 
+            <td>{{ implode(', ', $patientGroups[$roster->caregiver_4_id] ?? []) ?: '' }}</td> 
         </tr> 
     </table> 
     @else 

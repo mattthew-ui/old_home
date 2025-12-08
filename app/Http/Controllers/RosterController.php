@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Roster;
 use App\Models\Employee;
 use App\Models\ProjectUser;
+use App\Models\Patient;
 
 class RosterController extends Controller
 {
@@ -25,7 +26,26 @@ class RosterController extends Controller
         ->where('date', $date)
         ->first();
 
-        return view('daily_roster', compact('roster', 'date'));
+        $patientGroups = [];
+        if ($roster) {
+            $caregiverIds = [
+                $roster->caregiver_1_id,
+                $roster->caregiver_2_id,
+                $roster->caregiver_3_id,
+                $roster->caregiver_4_id,
+            ];
+
+            foreach ($caregiverIds as $caregiverId) {
+                if ($caregiverId) {
+                    $patientGroups[$caregiverId] = Patient::where('caregiver_assigned_id', $caregiverId)
+                        ->pluck('group_name')
+                        ->unique()
+                        ->toArray();
+                }
+            }
+        }
+
+        return view('daily_roster', compact('roster', 'date', 'patientGroups'));
     }
 
     public function newRoster()
