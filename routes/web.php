@@ -6,6 +6,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\CaregiverController;
 use App\Http\Controllers\AdminApproval;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\FamilyController;
 
 Route::get('/daily-roster', [RosterController::class, 'dailyRoster']);
 
@@ -46,6 +47,4 @@ Route::get('/patient/home', [PatientController::class, 'home']);
 
 Route::get('/patients', [PatientController::class, 'index']);
 
-Route::get('/family/home', function () {
-    return view('Familys_Home');
-});
+Route::get('/family/home', [FamilyController::class, 'home']);
