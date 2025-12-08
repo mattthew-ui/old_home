@@ -14,8 +14,8 @@ class EmployeeList extends Controller
 
         $query = DB::table('employees')
             ->join('users', 'employees.employee_id', '=', 'users.user_id')
-            ->whereIn('users.role_id', [3, 4])      // Doctors & Caregivers
-            ->where('users.acc_approval', 1)        // ✅ ONLY approved users
+            ->whereIn('users.role_id', [3, 4])
+            ->where('users.acc_approval', 1)
             ->select(
                 'employees.employee_id',
                 'employees.role_id',

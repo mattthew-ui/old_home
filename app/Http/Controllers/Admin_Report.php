@@ -9,7 +9,7 @@ class Admin_Report extends Controller
 {
     public function index()
     {
-        // Get all patients with at least one missed activity
+        
         $missed = DB::table('caregiver_duties as cd')
             ->join('patients as p', 'cd.patient_id', '=', 'p.patient_id')
             ->join('users as u', 'p.patient_id', '=', 'u.user_id')

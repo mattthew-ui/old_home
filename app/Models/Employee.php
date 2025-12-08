@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    protected $table = 'employees';           // Existing table
-    protected $primaryKey = 'employee_id';    // Primary key in your table
-    public $timestamps = false;               // Your table doesn’t have created_at / updated_at
+    protected $table = 'employees';  
+    protected $primaryKey = 'employee_id';  
+    public $timestamps = false;             
 
     protected $fillable = ['role_id', 'salary'];
 }

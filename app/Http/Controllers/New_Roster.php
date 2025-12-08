@@ -3,28 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB; // Using DB facade since you don't have models
+use Illuminate\Support\Facades\DB;
 
 class New_Roster extends Controller
 {
     public function create()
     {
-        // Get employees based on role
+        
         $supervisors = DB::table('employees')
             ->join('users', 'employees.employee_id', '=', 'users.user_id')
-            ->where('employees.role_id', 2) // Supervisor role
+            ->where('employees.role_id', 2)
             ->select('employees.employee_id', 'users.fname', 'users.lname')
             ->get();
 
         $doctors = DB::table('employees')
             ->join('users', 'employees.employee_id', '=', 'users.user_id')
-            ->where('employees.role_id', 3) // Doctor role
+            ->where('employees.role_id', 3)
             ->select('employees.employee_id', 'users.fname', 'users.lname')
             ->get();
 
         $caregivers = DB::table('employees')
             ->join('users', 'employees.employee_id', '=', 'users.user_id')
-            ->where('employees.role_id', 4) // Caregiver role
+            ->where('employees.role_id', 4)
             ->select('employees.employee_id', 'users.fname', 'users.lname')
             ->get();
 
@@ -41,7 +41,6 @@ class New_Roster extends Controller
         'groups.*.caregiver_id' => 'nullable|integer',
     ]);
 
-    // Insert a single roster for the day
     DB::table('rosters')->insert([
         'date' => $request->date,
         'supervisor_id' => $request->supervisor_id,

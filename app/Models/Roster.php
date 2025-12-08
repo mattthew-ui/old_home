@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Roster extends Model
 {
-    protected $table = 'rosters';             // Existing table
+    protected $table = 'rosters';
     protected $primaryKey = 'roster_id';
     public $timestamps = false;
 

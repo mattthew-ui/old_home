@@ -32,13 +32,13 @@ class Doctor_Appointment extends Controller
 
     public function getDoctorsByDate(Request $request)
 {
-    $date = $request->input('date'); // Already YYYY-MM-DD
+    $date = $request->input('date');
 
     $doctors = DB::table('rosters')
         ->join('employees', 'rosters.doctor_id', '=', 'employees.employee_id')
         ->join('users', 'employees.employee_id', '=', 'users.user_id')
         ->where('rosters.date', $date)
-        ->where('users.role_id', 3) // only doctors
+        ->where('users.role_id', 3) 
         ->select('employees.employee_id', 'users.fname', 'users.lname')
         ->distinct()
         ->get();
