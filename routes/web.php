@@ -45,3 +45,7 @@ Route::get('/AdminHomePage', function () {
 Route::get('/patient/home', [PatientController::class, 'home']);
 
 Route::get('/patients', [PatientController::class, 'index']);
+
+Route::get('/family/home', function () {
+    return view('Familys_Home');
+});
