@@ -4,7 +4,6 @@ use App\Http\Controllers\AdditionalPatientInfo;
 use App\Http\Controllers\AdminApproval;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminHomePage;
-use App\Http\Controllers\Payment;
 use App\Http\Controllers\New_Roster;
 use App\Http\Controllers\EmployeeList;
 use App\Http\Controllers\Doctor_Appointment;
@@ -12,8 +11,6 @@ use App\Http\Controllers\Admin_Report;
 
 Route::get('/AdminHomePage', [AdminHomePage::class, 'AdminHomePage'])
     -> name('AdminHomePage');
-
-Route::get('/payment', [Payment::class, 'paymentPage']);
 
 Route::get('/AdminApproval', [AdminApproval::class, 'index'])
     -> name('AdminApproval');
