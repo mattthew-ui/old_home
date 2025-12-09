@@ -84,13 +84,12 @@
     <div class="header-buttons">
       <button onclick ="window.location ='{{ route('roster.daily') }}'">Daily Roster</button>
         <button onclick ="window.location ='{{ route('AdminApproval') }}'">Register Requests</button>
-        <button onclick ="window.location ='{{ route('RoleCreation') }}'">Role Creation</button>
         <button onclick ="window.location ='{{ route('EmployeeList')}}'">Employee List</button>
         <button onclick ="window.location ='{{ route('Additional_Info') }}'">Patient Info</button>
+        <button onclick ="window.location ='{{ route('patients') }}'">Patients</button>
         <button onclick ="window.location ='{{ route('roster.new') }}'">New Roster</button>
         <button onclick ="window.location ='{{ route('doctor_appointment.create') }}'">Doctor Appt</button>
         <button onclick ="window.location ='{{ route('admin_report') }}'">Admin Report</button>
-        <button onclick ="window.location ='{{ route('payment.index') }}'">Payment</button>
         <button onclick ="window.location ='{{ route('admin_report') }}'">LOG OUT</button>
     </div>
   </header>
