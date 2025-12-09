@@ -81,7 +81,7 @@
         @csrf
 
         <label>Email</label>
-        <input type="email" name="email" required>
+        <input type="email" name="email" required autocomplete="off">
 
         <label>Password</label>
         <input type="password" name="password" required>

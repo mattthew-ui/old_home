@@ -87,7 +87,7 @@
         <input type="text" name="lname" required>
 
         <label>Email</label>
-        <input type="email" name="email" required>
+        <input type="email" name="email" required autocomplete="off">
 
         <label>Phone</label>
         <input type="text" name="phone">
