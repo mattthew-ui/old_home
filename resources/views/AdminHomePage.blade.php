@@ -92,7 +92,7 @@
         <button onclick ="window.location ='{{ route('doctor_appointment.create') }}'">Doctor Appt</button>
         <button onclick ="window.location ='{{ route('admin_report') }}'">Admin Report</button>
         <button onclick ="window.location ='{{ route('payment.index') }}'">Payment</button>
-        <button onclick ="window.location ='{{ route('admin_report') }}'">LOG OUT</button>
+        <button onclick ="window.location ='{{ route('home') }}'">LOG OUT</button>
     </div>
   </header>
   
