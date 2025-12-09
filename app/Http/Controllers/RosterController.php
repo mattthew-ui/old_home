@@ -16,8 +16,7 @@ class RosterController extends Controller
             ->with(['supervisor.user', 'doctor.user', 'caregiver1.user', 'caregiver2.user', 'caregiver3.user', 'caregiver4.user'])
             ->first();
 
-        // load patient groups if you use them
-        $patientGroups = []; // adjust if needed
+        $patientGroups = [];
 
         return view('Daily_Roster', compact('date', 'roster', 'patientGroups'));
     }

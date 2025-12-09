@@ -19,4 +19,34 @@ class Roster extends Model
         'caregiver_3_id',
         'caregiver_4_id'
     ];
+
+    public function supervisor()
+    {
+        return $this->belongsTo(Employee::class, 'supervisor_id', 'employee_id');
+    }
+
+    public function doctor()
+    {
+        return $this->belongsTo(Employee::class, 'doctor_id', 'employee_id');
+    }
+
+    public function caregiver1()
+    {
+        return $this->belongsTo(Employee::class, 'caregiver_1_id', 'employee_id');
+    }
+
+    public function caregiver2()
+    {
+        return $this->belongsTo(Employee::class, 'caregiver_2_id', 'employee_id');
+    }
+
+    public function caregiver3()
+    {
+        return $this->belongsTo(Employee::class, 'caregiver_3_id', 'employee_id');
+    }
+
+    public function caregiver4()
+    {
+        return $this->belongsTo(Employee::class, 'caregiver_4_id', 'employee_id');
+    }
 }

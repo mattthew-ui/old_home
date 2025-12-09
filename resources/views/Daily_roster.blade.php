@@ -98,15 +98,7 @@
                     <td>{{ optional($roster->caregiver2->user)->fname }} {{ optional($roster->caregiver2->user)->lname }}</td> 
                     <td>{{ optional($roster->caregiver3->user)->fname }} {{ optional($roster->caregiver3->user)->lname }}</td> 
                     <td>{{ optional($roster->caregiver4->user)->fname }} {{ optional($roster->caregiver4->user)->lname }}</td> 
-                </tr> 
-                <tr> 
-                    <td></td> 
-                    <td></td> 
-                    <td>{{ implode(', ', $patientGroups[$roster->caregiver_1_id] ?? []) ?: '' }}</td> 
-                    <td>{{ implode(', ', $patientGroups[$roster->caregiver_2_id] ?? []) ?: '' }}</td> 
-                    <td>{{ implode(', ', $patientGroups[$roster->caregiver_3_id] ?? []) ?: '' }}</td> 
-                    <td>{{ implode(', ', $patientGroups[$roster->caregiver_4_id] ?? []) ?: '' }}</td> 
-                </tr> 
+                </tr>
             </table> 
             @else 
                 <p>No roster found for this date.</p> 
