@@ -64,7 +64,7 @@
 <body>
 
     <div class="paper">
-        <h1>Family Member's Home</h1>
+        <h1>Family Member Home</h1>
 
         <h2>Sign In</h2>
         <form id="signin-form" method="GET" action="/family/home">
