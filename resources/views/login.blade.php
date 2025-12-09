@@ -22,6 +22,15 @@
                 0 0 40px 10px rgba(0,0,0,0.6),
                 inset 0 0 50px rgba(0,0,0,0.4);
         }
+        .logo-area {
+            width: 180px;
+            height: auto;
+            border: 2px dashed rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         label { font-weight: bold; display: block; margin-top: 15px; }
         input {
             width: 100%;
@@ -43,9 +52,7 @@
 
 <div class="paper">
 
-    <div class="logo-area">
-        <img src="/img/d98a94ac-ea43-401a-94ed-0654418bd71f-removebg-preview.webp">
-    </div>
+    <img class="logo-area" src="https://cdn.discordapp.com/attachments/1436340554010202163/1441101630060892191/d98a94ac-ea43-401a-94ed-0654418bd71f-removebg-preview.png?ex=6938f5ba&is=6937a43a&hm=7b8c0648168f91714c93e674c0e5c765e5f5a811b3066cedae4c5e2531ba1148">
 
     <h2 style="text-align:center;">Login</h2>
 
