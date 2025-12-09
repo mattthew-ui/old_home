@@ -15,32 +15,65 @@
         }
         .error-message { color: red; }
         .valid-message { color: green; }
+        body {
+            background: #3d2f1d;    
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+            font-family: "Georgia", serif;
+        }
+        .paper {
+            width: 700px;
+            background: #f5e6c8;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow:
+                0 0 40px 10px rgba(0,0,0,0.6),
+                inset 0 0 50px rgba(0,0,0,0.4);
+        }
+        label { font-weight: bold; display: block; margin-top: 15px; }
+        input {
+            width: 100%;
+            padding: 7px;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: brown;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .msg { color: red; margin-top: 10px; }
     </style>
 </head>
 <body>
-    <h1>Create Doctor Appointment</h1>
+    <div class="paper">
+        <h1>Create Doctor Appointment</h1>
 
-    @if(session('success'))
-        <p style="color: green;">{{ session('success') }}</p>
-    @endif
+        @if(session('success'))
+            <p style="color: green;">{{ session('success') }}</p>
+        @endif
 
-    <form action="{{ route('doctor_appointment.store') }}" method="POST" id="appointment_form">
-        @csrf
-        <label for="patient_id">Patient ID:</label>
-        <input type="number" name="patient_id" id="patient_id" required class="no-spinner">
-        <span id="patient_status"></span>
-        <br><br>
+        <form action="{{ route('doctor_appointment.store') }}" method="POST" id="appointment_form">
+            @csrf
+            <label for="patient_id">Patient ID:</label>
+            <input type="number" name="patient_id" id="patient_id" required class="no-spinner">
+            <span id="patient_status"></span>
+            <br>
 
-        <label for="date">Date:</label>
-        <input type="date" name="date" id="appointment_date" required><br><br>
+            <label for="date">Date:</label>
+            <input type="date" name="date" id="appointment_date" required><br><br>
 
-        <label for="doctor_id">Doctor:</label>
-        <select name="doctor_id" id="doctor_dropdown" required>
-            <option value="">Select date first</option>
-        </select><br><br>
+            <label for="doctor_id">Doctor:</label>
+            <select name="doctor_id" id="doctor_dropdown" required>
+                <option value="">Select date first</option>
+            </select><br>
 
-        <button type="submit">Create Appointment</button>
-    </form>
+            <button type="submit">Create Appointment</button>
+        </form>
+    </div>
 
     <script>
         $(document).ready(function() {

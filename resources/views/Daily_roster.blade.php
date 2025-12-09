@@ -5,7 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Daily Roster</title> 
 </head> 
-<style> 
+<style>
+    body{
+        background: #3d2f1d;    
+        display: flex;
+        justify-content: center;
+        padding: 40px;
+        font-family: "Georgia", serif;
+    }
+    .paper {
+        width: 700px;
+        background: #f5e6c8;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow:
+            0 0 40px 10px rgba(0,0,0,0.6),
+            inset 0 0 50px rgba(0,0,0,0.4);
+    }
+    label { font-weight: bold; display: block; margin-top: 15px; }
+    input {
+        width: 100%;
+        padding: 7px;
+        margin-top: 5px;
+    }
+    button {
+        margin-top: 20px;
+        padding: 10px 15px;
+        background: brown;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    input[type="button"]{
+        margin-top: 20px;
+        padding: 10px 15px;
+        background: brown;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: auto;
+    }
+    .msg { color: red; margin-top: 10px; } 
+    table{ 
+        width: 100%; 
+    } 
+    table, th, td{ 
+        border: 1px solid black; 
+        border-collapse: collapse; 
+    } 
+    input[type="text"]{ 
+        width: 30%; 
+    } 
+    .center-check{ 
+        text-align: center; 
+    } 
     table{ 
         width: 100%; 
     } 
@@ -15,49 +68,51 @@
     } 
 </style> 
 <body> 
-    <button type="button" onclick="window.location.href='/new-roster';">New Roster</button> 
-    <button type="button" onclick="window.location.href='/daily-roster';">Daily Roster</button> 
+    <div class="paper">
+        <button type="button" onclick="window.location.href='/new-roster';">New Roster</button> 
+        <button type="button" onclick="window.location.href='/daily-roster';">Daily Roster</button> 
 
-    <h1>Daily Roster</h1> 
+        <h1>Daily Roster</h1> 
 
-    <form method="GET"> 
-        <label>Date</label><br> 
-        <input type="date" name="date" value="{{ $date }}"> 
-        <input type="submit" value="OK"> 
-    </form> 
+        <form method="GET"> 
+            <label>Date</label><br> 
+            <input type="date" name="date" value="{{ $date }}"> 
+            <input type="submit" value="OK"> 
+        </form> 
 
-    <br> 
+        <br> 
 
-    @if ($roster) 
-    <table> 
-        <tr> 
-            <th>Supervisor</th> 
-            <th>Doctor</th> 
-            <th>Caregiver 1</th> 
-            <th>Caregiver 2</th> 
-            <th>Caregiver 3</th> 
-            <th>Caregiver 4</th> 
-        </tr> 
-        <tr>
-            <td>{{ $roster->supervisor->user->fname ?? '' }} {{ $roster->supervisor->user->lname ?? '' }}</td> 
-            <td>{{ $roster->doctor->user->fname ?? '' }} {{ $roster->doctor->user->lname ?? '' }}</td> 
-            <td>{{ optional($roster->caregiver1->user)->fname }} {{ optional($roster->caregiver1->user)->lname }}</td> 
-            <td>{{ optional($roster->caregiver2->user)->fname }} {{ optional($roster->caregiver2->user)->lname }}</td> 
-            <td>{{ optional($roster->caregiver3->user)->fname }} {{ optional($roster->caregiver3->user)->lname }}</td> 
-            <td>{{ optional($roster->caregiver4->user)->fname }} {{ optional($roster->caregiver4->user)->lname }}</td> 
-        </tr> 
-        <tr> 
-            <td></td> 
-            <td></td> 
-            <td>{{ implode(', ', $patientGroups[$roster->caregiver_1_id] ?? []) ?: '' }}</td> 
-            <td>{{ implode(', ', $patientGroups[$roster->caregiver_2_id] ?? []) ?: '' }}</td> 
-            <td>{{ implode(', ', $patientGroups[$roster->caregiver_3_id] ?? []) ?: '' }}</td> 
-            <td>{{ implode(', ', $patientGroups[$roster->caregiver_4_id] ?? []) ?: '' }}</td> 
-        </tr> 
-    </table> 
-    @else 
-        <p>No roster found for this date.</p> 
-    @endif 
+        @if ($roster) 
+        <table> 
+            <tr> 
+                <th>Supervisor</th> 
+                <th>Doctor</th> 
+                <th>Caregiver 1</th> 
+                <th>Caregiver 2</th> 
+                <th>Caregiver 3</th> 
+                <th>Caregiver 4</th> 
+            </tr> 
+            <tr>
+                <td>{{ $roster->supervisor->user->fname ?? '' }} {{ $roster->supervisor->user->lname ?? '' }}</td> 
+                <td>{{ $roster->doctor->user->fname ?? '' }} {{ $roster->doctor->user->lname ?? '' }}</td> 
+                <td>{{ optional($roster->caregiver1->user)->fname }} {{ optional($roster->caregiver1->user)->lname }}</td> 
+                <td>{{ optional($roster->caregiver2->user)->fname }} {{ optional($roster->caregiver2->user)->lname }}</td> 
+                <td>{{ optional($roster->caregiver3->user)->fname }} {{ optional($roster->caregiver3->user)->lname }}</td> 
+                <td>{{ optional($roster->caregiver4->user)->fname }} {{ optional($roster->caregiver4->user)->lname }}</td> 
+            </tr> 
+            <tr> 
+                <td></td> 
+                <td></td> 
+                <td>{{ implode(', ', $patientGroups[$roster->caregiver_1_id] ?? []) ?: '' }}</td> 
+                <td>{{ implode(', ', $patientGroups[$roster->caregiver_2_id] ?? []) ?: '' }}</td> 
+                <td>{{ implode(', ', $patientGroups[$roster->caregiver_3_id] ?? []) ?: '' }}</td> 
+                <td>{{ implode(', ', $patientGroups[$roster->caregiver_4_id] ?? []) ?: '' }}</td> 
+            </tr> 
+        </table> 
+        @else 
+            <p>No roster found for this date.</p> 
+        @endif 
+    </div>
 
 </body> 
 </html> 

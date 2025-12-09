@@ -5,7 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Family Home</title>
 </head>
-<style> 
+<style>
+        body{
+        background: #3d2f1d;    
+        display: flex;
+        justify-content: center;
+        padding: 40px;
+        font-family: "Georgia", serif;
+    }
+    .paper {
+        width: 700px;
+        background: #f5e6c8;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow:
+            0 0 40px 10px rgba(0,0,0,0.6),
+            inset 0 0 50px rgba(0,0,0,0.4);
+    }
+    label { font-weight: bold; display: block; margin-top: 15px; }
+    input {
+        width: 100%;
+        padding: 7px;
+        margin-top: 5px;
+    }
+    button {
+        margin-top: 20px;
+        padding: 10px 15px;
+        background: brown;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    input[type="button"]{
+        margin-top: 20px;
+        padding: 10px 15px;
+        background: brown;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: auto;
+    }
+    .msg { color: red; margin-top: 10px; } 
+    table, th, td{ 
+        border: 1px solid black; 
+        border-collapse: collapse; 
+    } 
     table{ 
         width: 100%; 
     } 
@@ -19,67 +63,67 @@
 </style> 
 <body>
 
-    <button type="button" onclick="window.location.href='/daily-roster';">Daily Roster</button> 
+    <div class="paper">
+        <h1>Family Member's Home</h1>
 
-    <h1>Family Member's Home</h1>
+        <h2>Sign In</h2>
+        <form id="signin-form" method="GET" action="/family/home">
+            <label for="family_code">Family Code</label><br>
+            <input type="password" name="family_code" value="{{ $familyCode ?? '' }}"><br><br>
+            <label for="patient_id">Patient ID</label><br>
+            <input type="number" name="patient_id" value="{{ $patientId ?? '' }}"><br><br>
 
-    <h2>Sign In</h2>
-    <form id="signin-form" method="GET" action="/family/home">
-        <label for="family_code">Family Code</label><br>
-        <input type="password" name="family_code" value="{{ $familyCode ?? '' }}"><br><br>
-        <label for="patient_id">Patient ID</label><br>
-        <input type="number" name="patient_id" value="{{ $patientId ?? '' }}"><br><br>
-
-        <input type="submit" value="OK"> 
-        <button type="button" id="signin-cancel">Cancel</button> 
-    </form>
-
-    <br>
-
-    @if($patient)
-        <div id="patient-section">
-        <form id="date-form" method="GET" action="/family/home">
-            <input type="hidden" name="family_code" value="{{ $familyCode }}">
-            <input type="hidden" name="patient_id" value="{{ $patientId }}">
-            <label for="date">Date</label><br>
-            <input type="date" name="date" value="{{ $date }}">
-            <input type="submit" value="OK">
+            <input type="submit" value="OK"> 
+            <button type="button" id="signin-cancel">Cancel</button> 
         </form>
 
-        <h2>Patient Information</h2>
+        <br>
 
-        @if($duties)
-        <table>
-            <tr>
-                <th>Doctor's Name</th>
-                <th>Doctor's Appointment</th>
-                <th>Caregiver's Name</th>
-                <th>Morning Medicine</th>
-                <th>Afternoon Medicine</th>
-                <th>Evening Medicine</th>
-                <th>Breakfast</th>
-                <th>Lunch</th>
-                <th>Dinner</th>
-            </tr>
-            <tr>
-                <td>{{ $doctor->user->fname ?? 'N/A' }} {{ $doctor->user->lname ?? '' }}</td>
-                <td class="center-check"><input type="checkbox" disabled></td>
-                <td>{{ $caregiver->user->fname ?? 'N/A' }} {{ $caregiver->user->lname ?? '' }}</td>
-                <td class="center-check"><input type="checkbox" @if($duties->morning_medicine) checked @endif disabled></td>
-                <td class="center-check"><input type="checkbox" @if($duties->afternoon_medicine) checked @endif disabled></td>
-                <td class="center-check"><input type="checkbox" @if($duties->evening_medicine) checked @endif disabled></td>
-                <td class="center-check"><input type="checkbox" @if($duties->breakfast) checked @endif disabled></td>
-                <td class="center-check"><input type="checkbox" @if($duties->lunch) checked @endif disabled></td>
-                <td class="center-check"><input type="checkbox" @if($duties->dinner) checked @endif disabled></td>
-            </tr>
-        </table>
+        @if($patient)
+            <div id="patient-section">
+            <form id="date-form" method="GET" action="/family/home">
+                <input type="hidden" name="family_code" value="{{ $familyCode }}">
+                <input type="hidden" name="patient_id" value="{{ $patientId }}">
+                <label for="date">Date</label><br>
+                <input type="date" name="date" value="{{ $date }}">
+                <input type="submit" value="OK">
+            </form>
+
+            <h2>Patient Information</h2>
+
+            @if($duties)
+            <table>
+                <tr>
+                    <th>Doctor's Name</th>
+                    <th>Doctor's Appointment</th>
+                    <th>Caregiver's Name</th>
+                    <th>Morning Medicine</th>
+                    <th>Afternoon Medicine</th>
+                    <th>Evening Medicine</th>
+                    <th>Breakfast</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                </tr>
+                <tr>
+                    <td>{{ $doctor->user->fname ?? 'N/A' }} {{ $doctor->user->lname ?? '' }}</td>
+                    <td class="center-check"><input type="checkbox" disabled></td>
+                    <td>{{ $caregiver->user->fname ?? 'N/A' }} {{ $caregiver->user->lname ?? '' }}</td>
+                    <td class="center-check"><input type="checkbox" @if($duties->morning_medicine) checked @endif disabled></td>
+                    <td class="center-check"><input type="checkbox" @if($duties->afternoon_medicine) checked @endif disabled></td>
+                    <td class="center-check"><input type="checkbox" @if($duties->evening_medicine) checked @endif disabled></td>
+                    <td class="center-check"><input type="checkbox" @if($duties->breakfast) checked @endif disabled></td>
+                    <td class="center-check"><input type="checkbox" @if($duties->lunch) checked @endif disabled></td>
+                    <td class="center-check"><input type="checkbox" @if($duties->dinner) checked @endif disabled></td>
+                </tr>
+            </table>
+            @else
+                <p>No information to display for the selected date.</p>
+            @endif
+            </div>
         @else
-            <p>No information to display for the selected date.</p>
+            <p>Please enter a valid family code and patient ID to view information.</p>
         @endif
-        </div>
-    @else
-        <p>Please enter a valid family code and patient ID to view information.</p>
-    @endif
+    </div>
 
 </body>
 <script>
