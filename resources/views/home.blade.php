@@ -34,14 +34,17 @@
     .logo-area {
         width: 180px;
         height: auto;
-        border: 2px dashed rgba(0,0,0,0.3);
-        margin-bottom: 30px;
         display: flex;
         justify-content: center;
         align-items: center;
         font-style: italic;
         color: rgba(0,0,0,0.4);
     } 
+    .logo-wrap{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
     button {
             padding: 10px 15px;
             background: brown;
@@ -71,7 +74,9 @@
     <div class="paper">
         <main class="card">
 
-        <img class="logo-area" src="https://cdn.discordapp.com/attachments/1436340554010202163/1441101630060892191/d98a94ac-ea43-401a-94ed-0654418bd71f-removebg-preview.png?ex=6938f5ba&is=6937a43a&hm=7b8c0648168f91714c93e674c0e5c765e5f5a811b3066cedae4c5e2531ba1148">
+        <div class="logo-wrap">
+            <img class="logo-area" src="https://cdn.discordapp.com/attachments/1436340554010202163/1441101630060892191/d98a94ac-ea43-401a-94ed-0654418bd71f-removebg-preview.png?ex=6938f5ba&is=6937a43a&hm=7b8c0648168f91714c93e674c0e5c765e5f5a811b3066cedae4c5e2531ba1148">
+        </div>
 
             <div class="masthead">
                 <h1>Welcome to Our<br>Old Folks Home</h1>
