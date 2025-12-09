@@ -93,13 +93,12 @@
         <label>Role</label>
         <select name="role" id="roleSelect" required>
             <option value="">-- Select Role --</option>
-            <option value="1">Resident</option>
-            <option value="2">Family Member</option>
-            <option value="3">Caregiver</option>
-            <option value="4">Supervisor</option>
-            <option value="5">Doctor</option>
-            <option value="6">Admin</option>
-            <option value="7">Employee</option>
+            <option value="1">Admin</option>
+            <option value="2">Supervisor</option>
+            <option value="3">Doctor</option>
+            <option value="4">Caregiver</option>
+            <option value="5">Patient</option>
+            <option value="6">Family</option>
         </select>
 
         {{-- RESIDENT FIELDS --}}
@@ -116,12 +115,6 @@
 
             <label>Relation to Emergency Contact</label>
             <input type="text" name="relation">
-
-            <label>Group Name</label>
-            <input type="text" name="group_name">
-
-            <label>Admission Date</label>
-            <input type="date" name="admission_date">
         </div>
 
         {{-- FAMILY FIELDS --}}
@@ -148,8 +141,8 @@
 <script>
 document.getElementById("roleSelect").addEventListener("change", function() {
     let role = this.value;
-    document.getElementById("residentFields").style.display = (role == "1") ? "block" : "none";
-    document.getElementById("familyFields").style.display   = (role == "2") ? "block" : "none";
+    document.getElementById("residentFields").style.display = (role == "5") ? "block" : "none";
+    document.getElementById("familyFields").style.display   = (role == "6") ? "block" : "none";
 });
 </script>
 

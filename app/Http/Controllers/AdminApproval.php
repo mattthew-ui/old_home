@@ -26,10 +26,11 @@ class AdminApproval extends Controller
         }
 
         if ($request->has('reject')) {
-            ProjectUser::where('user_id', $user_id)->delete();
+            ProjectUser::where('user_id', $user_id)
+                ->update(['status' => 'denied']);
 
             return redirect()->route('AdminApproval')
-                ->with('message', 'User rejected and removed.');
+                ->with('message', 'User rejected.');
         }
 
         return redirect()->route('AdminApproval');
