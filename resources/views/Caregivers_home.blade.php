@@ -65,8 +65,6 @@
     <div class="outer-wrap">
         <div class="paper">
 
-            <button onclick ="window.location ='{{ route('AdminApproval') }}'">Register Requests</button>
-
         <h1>Caregiver Home</h1> 
 
         <h2>List of Patient Duties Today</h2> 

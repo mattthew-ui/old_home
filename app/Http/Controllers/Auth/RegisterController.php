@@ -33,7 +33,7 @@ class RegisterController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'date_of_birth' => $request->dob,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
             'status' => 'pending'
         ]);
 

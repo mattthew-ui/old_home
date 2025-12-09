@@ -21,7 +21,7 @@
     }
     .paper {
         margin-top: 160px;
-        width: 700px;
+        width: 900px;
         background: #f5e6c8;
         padding: 40px;
         border-radius: 10px;

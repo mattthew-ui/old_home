@@ -43,6 +43,10 @@ Route::post('/caregiver/update', [CaregiverController::class, 'updateDuties']);
 
 Route::get('/AdminApproval', [AdminApproval::class, 'index'])
     -> name('AdminApproval');
+    
+Route::post('/AdminApproval/status', [AdminApproval::class, 'userStatus'])
+    ->name('userAppStatus');
+
 
 Route::get('/AdminHomePage', function () {
     return view('AdminHomePage');
