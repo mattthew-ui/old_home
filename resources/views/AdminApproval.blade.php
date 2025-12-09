@@ -8,10 +8,11 @@
 <style>
   body {
         background: #3d2f1d;    
+        font-family: "Georgia", serif;
+    }
+    .outer-wrap{
         display: flex;
         justify-content: center;
-        padding: 40px;
-        font-family: "Georgia", serif;
     }
     .paper {
         width: 700px;
@@ -44,29 +45,31 @@
 </style>
 <body>
 
-  <div class="paper">
-    <h1>Accounts To Approve</h1>
+  <div class="outer-wrap">
+    <div class="paper">
+      <h1>Accounts To Approve</h1>
 
-    @if ($pendingUsers->isEmpty())
-        <p>No pending user approvals.</p>
-    @else
-        @foreach ($pendingUsers as $User) 
-          <div class = "userApp"> 
-            <ul>
-              <li>Name: {{ $User->fname }}</li>
-              <li>Email: {{ $User->email }}</li>
-              <li>ID: {{ $User->user_id }}</li>
-              <li>Role: {{ $User->role_id }} </li>
-            </ul>
-          </div>
-          <form method="POST" action="{{ route('userAppStatus') }}">
-            @csrf
-            <input type="hidden" name="user_id" value="{{ $User->user_id }}">
-            <button type="submit" name="approve" value="approve">Approve</button>
-            <button type="submit" name="reject" value="reject">Deny</button>
-            </form>
-        @endforeach
-      @endif
+      @if ($pendingUsers->isEmpty())
+          <p>No pending user approvals.</p>
+      @else
+          @foreach ($pendingUsers as $User) 
+            <div class = "userApp"> 
+              <ul>
+                <li>Name: {{ $User->fname }}</li>
+                <li>Email: {{ $User->email }}</li>
+                <li>ID: {{ $User->user_id }}</li>
+                <li>Role: {{ $User->role_id }} </li>
+              </ul>
+            </div>
+            <form method="POST" action="{{ route('userAppStatus') }}">
+              @csrf
+              <input type="hidden" name="user_id" value="{{ $User->user_id }}">
+              <button type="submit" name="approve" value="approve">Approve</button>
+              <button type="submit" name="reject" value="reject">Deny</button>
+              </form>
+          @endforeach
+        @endif
+      </div>
     </div>
 </body>
 </html>

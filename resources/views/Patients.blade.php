@@ -9,11 +9,12 @@
 <style>
     body{
         background: #3d2f1d;    
-        display: flex;
-        justify-content: center;
-        padding: 40px;
         font-family: "Georgia", serif;
     }
+    .outer-wrap{
+            display: flex;
+            justify-content: center;
+        }
     .paper {
         width: 700px;
         background: #f5e6c8;
@@ -60,77 +61,79 @@
 </style>
 <body>
 
-    <div class="paper">
-        <h1>List of Patients</h1>
+    <div class="outer-wrap">
+        <div class="paper">
+            <h1>List of Patients</h1>
 
-        <table>
-            <tr>
-                <th>
-                    ID
-                    <br>
-                    <form method="GET" action="/patients">
-                        <input type="text" name="search_id" value="{{ request('search_id') }}" placeholder="Search">
-                        <button type="submit">OK</button>
-                    </form>
-                </th>
-                <th>
-                    Name
-                    <br>
-                    <form method="GET" action="/patients">
-                        <input type="text" name="search_name" value="{{ request('search_name') }}" placeholder="Search">
-                        <button type="submit">OK</button>
-                    </form>
-                </th>
-                <th>
-                    Age
-                    <br>
-                    <form method="GET" action="/patients">
-                        <input type="text" name="search_age" value="{{ request('search_age') }}" placeholder="Search">
-                        <button type="submit">OK</button>
-                    </form>
-                </th>
-                <th>
-                    Emergency Contact
-                    <br>
-                    <form method="GET" action="/patients">
-                        <input type="text" name="search_relation_to_emergency" value="{{ request('search_relation_to_emergency') }}" placeholder="Search">
-                        <button type="submit">OK</button>
-                    </form>
-                </th>
-                <th>
-                    Emergency Contact Name
-                    <br>
-                    <form method="GET" action="/patients">
-                        <input type="text" name="search_emergency_contact" value="{{ request('search_emergency_contact') }}" placeholder="Search">
-                        <button type="submit">OK</button>
-                    </form>
-                </th>
-                <th>
-                    Admission Date
-                    <br>
-                    <form method="GET" action="/patients">
-                        <input type="text" name="search_admission_date" value="{{ request('search_admission_date') }}" placeholder="Search">
-                        <button type="submit">OK</button>
-                    </form>
-                </th>
-            </tr>
-            @if(isset($patients) && $patients->count())
-                @foreach($patients as $p)
-                    <tr>
-                        <td>{{ $p->patient_id }}</td>
-                        <td>{{ $p->user->fname ?? '' }} {{ $p->user->lname ?? '' }}</td>
-                        <td>{{ $p->age ?? '—' }}</td>
-                        <td>{{ $p->relation_to_emergency ?? '—' }}</td>
-                        <td>{{ $p->emergency_contact ?? '—' }}</td>
-                        <td>{{ $p->admission_date ?? '—' }}</td>
-                    </tr>
-                @endforeach
-            @else
+            <table>
                 <tr>
-                    <td colspan="6">No patients found.</td>
+                    <th>
+                        ID
+                        <br>
+                        <form method="GET" action="/patients">
+                            <input type="text" name="search_id" value="{{ request('search_id') }}" placeholder="Search">
+                            <button type="submit">OK</button>
+                        </form>
+                    </th>
+                    <th>
+                        Name
+                        <br>
+                        <form method="GET" action="/patients">
+                            <input type="text" name="search_name" value="{{ request('search_name') }}" placeholder="Search">
+                            <button type="submit">OK</button>
+                        </form>
+                    </th>
+                    <th>
+                        Age
+                        <br>
+                        <form method="GET" action="/patients">
+                            <input type="text" name="search_age" value="{{ request('search_age') }}" placeholder="Search">
+                            <button type="submit">OK</button>
+                        </form>
+                    </th>
+                    <th>
+                        Emergency Contact
+                        <br>
+                        <form method="GET" action="/patients">
+                            <input type="text" name="search_relation_to_emergency" value="{{ request('search_relation_to_emergency') }}" placeholder="Search">
+                            <button type="submit">OK</button>
+                        </form>
+                    </th>
+                    <th>
+                        Emergency Contact Name
+                        <br>
+                        <form method="GET" action="/patients">
+                            <input type="text" name="search_emergency_contact" value="{{ request('search_emergency_contact') }}" placeholder="Search">
+                            <button type="submit">OK</button>
+                        </form>
+                    </th>
+                    <th>
+                        Admission Date
+                        <br>
+                        <form method="GET" action="/patients">
+                            <input type="text" name="search_admission_date" value="{{ request('search_admission_date') }}" placeholder="Search">
+                            <button type="submit">OK</button>
+                        </form>
+                    </th>
                 </tr>
-            @endif
-        </table>
+                @if(isset($patients) && $patients->count())
+                    @foreach($patients as $p)
+                        <tr>
+                            <td>{{ $p->patient_id }}</td>
+                            <td>{{ $p->user->fname ?? '' }} {{ $p->user->lname ?? '' }}</td>
+                            <td>{{ $p->age ?? '—' }}</td>
+                            <td>{{ $p->relation_to_emergency ?? '—' }}</td>
+                            <td>{{ $p->emergency_contact ?? '—' }}</td>
+                            <td>{{ $p->admission_date ?? '—' }}</td>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr>
+                        <td colspan="6">No patients found.</td>
+                    </tr>
+                @endif
+            </table>
+        </div>
     </div>
     
 </body>

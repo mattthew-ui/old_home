@@ -7,10 +7,11 @@
     <style>
         body {
             background: #3d2f1d;    
+            font-family: "Georgia", serif;
+        }
+        .outer-wrap{
             display: flex;
             justify-content: center;
-            padding: 40px;
-            font-family: "Georgia", serif;
         }
         .paper {
             width: 700px;
@@ -46,29 +47,31 @@
     </style>
 </head>
 <body>
-    <div class="paper">
-        <h1>Create New Role</h1>
+    <div class="outer-wrap">
+        <div class="paper">
+            <h1>Create New Role</h1>
 
-        <form method="POST" action="{{ route('storeRoleCreation') }}">
-        @csrf
-        <label> Role Name </label>
-        <input type="text" name="role_name" required>
-        <br>
-        <label> Access Level</label>
-        <input type="number" name="access_level" required>
+            <form method="POST" action="{{ route('storeRoleCreation') }}">
+            @csrf
+            <label> Role Name </label>
+            <input type="text" name="role_name" required>
+            <br>
+            <label> Access Level</label>
+            <input type="number" name="access_level" required>
 
-        <button type="submit"> Create New Role</button>
-    </form>
+            <button type="submit"> Create New Role</button>
+        </form>
 
-    @if ($errors->any())
-        <div style="color: red;">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+        @if ($errors->any())
+            <div style="color: red;">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         </div>
-    @endif
     </div>
 </body>
 </html>

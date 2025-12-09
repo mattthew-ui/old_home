@@ -8,11 +8,12 @@
 <style>
     body{
         background: #3d2f1d;    
-        display: flex;
-        justify-content: center;
-        padding: 40px;
         font-family: "Georgia", serif;
     }
+    .outer-wrap{
+            display: flex;
+            justify-content: center;
+        }
     .paper {
         width: 700px;
         background: #f5e6c8;
@@ -71,75 +72,77 @@
     } 
 </style> 
 <body>
-    <div class="paper">
-        <h1>Patient of Doctor</h1> 
+    <div class="outer-wrap">
+        <div class="paper">
+            <h1>Patient of Doctor</h1> 
 
-        <h2>Old Prescriptions</h2> 
-        <table>
-            <tr> 
-                <th>Date</th> 
-                <th style="width: 25%;">Comment</th> 
-                <th>Morning Medicine</th> 
-                <th>Afternoon Medicine</th> 
-                <th>Evening Medicine</th> 
-            </tr>
+            <h2>Old Prescriptions</h2> 
+            <table>
+                <tr> 
+                    <th>Date</th> 
+                    <th style="width: 25%;">Comment</th> 
+                    <th>Morning Medicine</th> 
+                    <th>Afternoon Medicine</th> 
+                    <th>Evening Medicine</th> 
+                </tr>
 
-            @foreach($prescriptions as $p) 
-            <tr> 
-                <td>{{ $p->date }}</td> 
-                <td>{{ $p->comment }}</td> 
-                <td class="center-check"> 
-                    <input type="checkbox" {{ $p->morning_medicine ? 'checked' : '' }} disabled> 
-                </td> 
-                <td class="center-check"> 
-                    <input type="checkbox" {{ $p->afternoon_medicine ? 'checked' : '' }} disabled> 
-                </td> 
-                <td class="center-check"> 
-                    <input type="checkbox" {{ $p->evening_medicine ? 'checked' : '' }} disabled> 
-                </td> 
-            </tr> 
-            @endforeach 
-        </table> 
+                @foreach($prescriptions as $p) 
+                <tr> 
+                    <td>{{ $p->date }}</td> 
+                    <td>{{ $p->comment }}</td> 
+                    <td class="center-check"> 
+                        <input type="checkbox" {{ $p->morning_medicine ? 'checked' : '' }} disabled> 
+                    </td> 
+                    <td class="center-check"> 
+                        <input type="checkbox" {{ $p->afternoon_medicine ? 'checked' : '' }} disabled> 
+                    </td> 
+                    <td class="center-check"> 
+                        <input type="checkbox" {{ $p->evening_medicine ? 'checked' : '' }} disabled> 
+                    </td> 
+                </tr> 
+                @endforeach 
+            </table> 
 
-        <br> 
+            <br> 
 
-        <input type="button" onclick="toggleDiv()" value="New Prescription" 
-        {{ $hasAppointmentToday ? '' : 'disabled style=opacity:0.5;cursor:not-allowed;' }}> 
+            <input type="button" onclick="toggleDiv()" value="New Prescription" 
+            {{ $hasAppointmentToday ? '' : 'disabled style=opacity:0.5;cursor:not-allowed;' }}> 
 
-        <br><br> 
+            <br><br> 
 
-        <div id="new-prescription-div"> 
-            <hr>
-            <br>
-            <form method="POST" action="/doctor/patient/{{ $patient->patient_id }}/new-prescription"> 
-                @csrf 
-                <table> 
-                    <tr> 
-                        <th style="width: 30%;">Comment</th> 
-                        <th>Morning Medicine</th> 
-                        <th>Afternoon Medicine</th> 
-                        <th>Evening Medicine</th> 
-                    </tr> 
-                    <tr style="text-align: center;"> 
-                        <td> 
-                            <textarea name="comment"></textarea> 
-                        </td> 
-                        <td> 
-                            <textarea name="morning_medicine"></textarea> 
-                        </td> 
-                        <td> 
-                            <textarea name="afternoon_medicine"></textarea> 
-                        </td>
-                        <td>
-                            <textarea name="evening_medicine"></textarea> 
-                        </td> 
-                    </tr> 
-                </table> 
-                <input type="submit" value="OK"> 
-                <input type="button" value="Cancel" onclick="toggleDiv()"> 
-            </form> 
-        </div>
-    </div>  
+            <div id="new-prescription-div"> 
+                <hr>
+                <br>
+                <form method="POST" action="/doctor/patient/{{ $patient->patient_id }}/new-prescription"> 
+                    @csrf 
+                    <table> 
+                        <tr> 
+                            <th style="width: 30%;">Comment</th> 
+                            <th>Morning Medicine</th> 
+                            <th>Afternoon Medicine</th> 
+                            <th>Evening Medicine</th> 
+                        </tr> 
+                        <tr style="text-align: center;"> 
+                            <td> 
+                                <textarea name="comment"></textarea> 
+                            </td> 
+                            <td> 
+                                <textarea name="morning_medicine"></textarea> 
+                            </td> 
+                            <td> 
+                                <textarea name="afternoon_medicine"></textarea> 
+                            </td>
+                            <td>
+                                <textarea name="evening_medicine"></textarea> 
+                            </td> 
+                        </tr> 
+                    </table> 
+                    <input type="submit" value="OK"> 
+                    <input type="button" value="Cancel" onclick="toggleDiv()"> 
+                </form> 
+            </div>
+        </div> 
+    </div>
 
     <script> 
         function toggleDiv(){ 

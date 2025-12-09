@@ -6,10 +6,11 @@
 <style>
         body {
             background: #3d2f1d;    
+            font-family: "Georgia", serif;
+        }
+        .outer-wrap{
             display: flex;
             justify-content: center;
-            padding: 40px;
-            font-family: "Georgia", serif;
         }
         .paper {
             width: 700px;
@@ -44,44 +45,46 @@
         }
     </style>
 <body>
-    <div class="paper">
-        <h1>Employee List</h1>
+    <div class="outer-wrap">
+        <div class="paper">
+            <h1>Employee List</h1>
 
-        <form method="GET" action="{{ route('EmployeeList') }}">
-            @csrf
+            <form method="GET" action="{{ route('EmployeeList') }}">
+                @csrf
 
-            <label for="filter">Search By:</label>
-            <select name="filter">
-                <option value="">-- Select Filter --</option>
-                <option value="employee_id" {{ request('filter') == 'employee_id' ? 'selected' : '' }} style="width: 20%;">Employee ID</option>
-                <option value="role_id" {{ request('filter') == 'role_id' ? 'selected' : '' }}>Role ID</option>
-                <option value="salary" {{ request('filter') == 'salary' ? 'selected' : '' }}>Salary</option>
-            </select>
+                <label for="filter">Search By:</label>
+                <select name="filter">
+                    <option value="">-- Select Filter --</option>
+                    <option value="employee_id" {{ request('filter') == 'employee_id' ? 'selected' : '' }} style="width: 20%;">Employee ID</option>
+                    <option value="role_id" {{ request('filter') == 'role_id' ? 'selected' : '' }}>Role ID</option>
+                    <option value="salary" {{ request('filter') == 'salary' ? 'selected' : '' }}>Salary</option>
+                </select>
 
-            <input type="text" name="search" placeholder="Search..." value="{{ request('search') }}">
+                <input type="text" name="search" placeholder="Search..." value="{{ request('search') }}">
 
-            <button type="submit">Search</button>
-        </form>
+                <button type="submit">Search</button>
+            </form>
 
-        <br>
+            <br>
 
-        <table>
-            <tr>
-                <th>Employee ID</th>
-                <th>Name</th>
-                <th>Role ID</th>
-                <th>Salary</th>
-            </tr>
-
-            @foreach ($employees as $emp)
+            <table>
                 <tr>
-                    <td>{{ $emp->employee_id }}</td>
-                    <td>{{ $emp->fname }} {{ $emp->lname }}</td>
-                    <td>{{ $emp->role_id }}</td>
-                    <td>{{ $emp->salary }}</td>
+                    <th>Employee ID</th>
+                    <th>Name</th>
+                    <th>Role ID</th>
+                    <th>Salary</th>
                 </tr>
-            @endforeach
-        </table>
+
+                @foreach ($employees as $emp)
+                    <tr>
+                        <td>{{ $emp->employee_id }}</td>
+                        <td>{{ $emp->fname }} {{ $emp->lname }}</td>
+                        <td>{{ $emp->role_id }}</td>
+                        <td>{{ $emp->salary }}</td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
     </div>
 
 </body>

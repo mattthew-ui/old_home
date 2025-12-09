@@ -8,10 +8,11 @@
 <style>
     body{
         background: #3d2f1d;    
+        font-family: "Georgia", serif;
+    }
+    .outer-wrap{
         display: flex;
         justify-content: center;
-        padding: 40px;
-        font-family: "Georgia", serif;
     }
     .paper {
         width: 700px;
@@ -68,50 +69,52 @@
     } 
 </style> 
 <body> 
-    <div class="paper">
-        <button type="button" onclick="window.location.href='/new-roster';">New Roster</button> 
-        <button type="button" onclick="window.location.href='/daily-roster';">Daily Roster</button> 
+    <div class="outer-wrap">
+        <div class="paper">
+            <button type="button" onclick="window.location.href='/new-roster';">New Roster</button> 
+            <button type="button" onclick="window.location.href='/daily-roster';">Daily Roster</button> 
 
-        <h1>Daily Roster</h1> 
+            <h1>Daily Roster</h1> 
 
-        <form method="GET"> 
-            <label>Date</label><br> 
-            <input type="date" name="date" value="{{ $date }}"> 
-            <input type="submit" value="OK"> 
-        </form> 
+            <form method="GET"> 
+                <label>Date</label><br> 
+                <input type="date" name="date" value="{{ $date }}"> 
+                <input type="submit" value="OK"> 
+            </form> 
 
-        <br> 
+            <br> 
 
-        @if ($roster) 
-        <table> 
-            <tr> 
-                <th>Supervisor</th> 
-                <th>Doctor</th> 
-                <th>Caregiver 1</th> 
-                <th>Caregiver 2</th> 
-                <th>Caregiver 3</th> 
-                <th>Caregiver 4</th> 
-            </tr> 
-            <tr>
-                <td>{{ $roster->supervisor->user->fname ?? '' }} {{ $roster->supervisor->user->lname ?? '' }}</td> 
-                <td>{{ $roster->doctor->user->fname ?? '' }} {{ $roster->doctor->user->lname ?? '' }}</td> 
-                <td>{{ optional($roster->caregiver1->user)->fname }} {{ optional($roster->caregiver1->user)->lname }}</td> 
-                <td>{{ optional($roster->caregiver2->user)->fname }} {{ optional($roster->caregiver2->user)->lname }}</td> 
-                <td>{{ optional($roster->caregiver3->user)->fname }} {{ optional($roster->caregiver3->user)->lname }}</td> 
-                <td>{{ optional($roster->caregiver4->user)->fname }} {{ optional($roster->caregiver4->user)->lname }}</td> 
-            </tr> 
-            <tr> 
-                <td></td> 
-                <td></td> 
-                <td>{{ implode(', ', $patientGroups[$roster->caregiver_1_id] ?? []) ?: '' }}</td> 
-                <td>{{ implode(', ', $patientGroups[$roster->caregiver_2_id] ?? []) ?: '' }}</td> 
-                <td>{{ implode(', ', $patientGroups[$roster->caregiver_3_id] ?? []) ?: '' }}</td> 
-                <td>{{ implode(', ', $patientGroups[$roster->caregiver_4_id] ?? []) ?: '' }}</td> 
-            </tr> 
-        </table> 
-        @else 
-            <p>No roster found for this date.</p> 
-        @endif 
+            @if ($roster) 
+            <table> 
+                <tr> 
+                    <th>Supervisor</th> 
+                    <th>Doctor</th> 
+                    <th>Caregiver 1</th> 
+                    <th>Caregiver 2</th> 
+                    <th>Caregiver 3</th> 
+                    <th>Caregiver 4</th> 
+                </tr> 
+                <tr>
+                    <td>{{ $roster->supervisor->user->fname ?? '' }} {{ $roster->supervisor->user->lname ?? '' }}</td> 
+                    <td>{{ $roster->doctor->user->fname ?? '' }} {{ $roster->doctor->user->lname ?? '' }}</td> 
+                    <td>{{ optional($roster->caregiver1->user)->fname }} {{ optional($roster->caregiver1->user)->lname }}</td> 
+                    <td>{{ optional($roster->caregiver2->user)->fname }} {{ optional($roster->caregiver2->user)->lname }}</td> 
+                    <td>{{ optional($roster->caregiver3->user)->fname }} {{ optional($roster->caregiver3->user)->lname }}</td> 
+                    <td>{{ optional($roster->caregiver4->user)->fname }} {{ optional($roster->caregiver4->user)->lname }}</td> 
+                </tr> 
+                <tr> 
+                    <td></td> 
+                    <td></td> 
+                    <td>{{ implode(', ', $patientGroups[$roster->caregiver_1_id] ?? []) ?: '' }}</td> 
+                    <td>{{ implode(', ', $patientGroups[$roster->caregiver_2_id] ?? []) ?: '' }}</td> 
+                    <td>{{ implode(', ', $patientGroups[$roster->caregiver_3_id] ?? []) ?: '' }}</td> 
+                    <td>{{ implode(', ', $patientGroups[$roster->caregiver_4_id] ?? []) ?: '' }}</td> 
+                </tr> 
+            </table> 
+            @else 
+                <p>No roster found for this date.</p> 
+            @endif 
+        </div>
     </div>
 
 </body> 
