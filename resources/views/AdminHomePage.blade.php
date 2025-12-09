@@ -37,7 +37,7 @@
   }
 
   .header-buttons{
-    display: flex;
+    display: flex; 
     gap: 15px;
   }
 
