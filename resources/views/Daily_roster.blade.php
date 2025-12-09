@@ -71,9 +71,6 @@
 <body> 
     <div class="outer-wrap">
         <div class="paper">
-            <button type="button" onclick="window.location.href='/new-roster';">New Roster</button> 
-            <button type="button" onclick="window.location.href='/daily-roster';">Daily Roster</button> 
-
             <h1>Daily Roster</h1> 
 
             <form method="GET"> 

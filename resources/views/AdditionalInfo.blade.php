@@ -87,6 +87,7 @@
     <img src="https://cdn.discordapp.com/attachments/1436340554010202163/1441101630060892191/d98a94ac-ea43-401a-94ed-0654418bd71f-removebg-preview.png?ex=6938f5ba&is=6937a43a&hm=7b8c0648168f91714c93e674c0e5c765e5f5a811b3066cedae4c5e2531ba1148">
 
     <div class="header-buttons">
+        <button onclick ="window.location ='{{ route('roster.daily') }}'">Daily Roster</button>
         <button onclick ="window.location ='{{ route('AdminApproval') }}'">Register Requests</button>
         <button onclick ="window.location ='{{ route('RoleCreation') }}'">Role Creation</button>
         <button onclick ="window.location ='{{ route('EmployeeList')}}'">Employee List</button>
@@ -99,7 +100,7 @@
 
     <div class="outer-wrap">
         <div class="paper">
-            <h1>Patient Information Lookup</h1>
+            <h1 style="text-align: center;">Patient Information Lookup</h1>
             <form method="GET" action="{{ route('Additional_Info') }}">
                 @csrf
                 <label for="patient_id">Patient ID:</label>

@@ -70,6 +70,9 @@ Route::get('/RoleCreation', [RoleCreation::class, 'index'])
 Route::post('/RoleCreation', [RoleCreation::class, 'store'])
     ->name('storeRoleCreation');
 
+    Route::get('/roster/daily', [RosterController::class, 'show'])
+    ->name('roster.daily');
+
 Route::get('/roster/new', [New_Roster::class, 'create'])
 ->name('roster.new');
 
