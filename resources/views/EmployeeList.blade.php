@@ -74,7 +74,6 @@
             margin-top: 5px;
         }
         button {
-            margin-top: 20px;
             padding: 10px 15px;
             background: brown;
             color: white;
