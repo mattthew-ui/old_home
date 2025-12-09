@@ -56,12 +56,17 @@ Route::get('/AdminHomePage', function () {
     return view('AdminHomePage');
 });
 
+Route::get('/supervisor/home', function () {
+    return view('SupervisorHome');
+});
+
 Route::get('/admin-report', [Admin_Report::class, 'index'])
     ->name('admin_report');
 
 Route::get('/patient/home', [PatientController::class, 'home']);
 
-Route::get('/patients', [PatientController::class, 'index']);
+Route::get('/patients', [PatientController::class, 'index'])
+    ->name('patients');
 
 Route::get('/family/home', [FamilyController::class, 'home']);
 

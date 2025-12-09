@@ -87,7 +87,6 @@
         <button onclick ="window.location ='{{ route('RoleCreation') }}'">Role Creation</button>
         <button onclick ="window.location ='{{ route('EmployeeList')}}'">Employee List</button>
         <button onclick ="window.location ='{{ route('Additional_Info') }}'">Patient Info</button>
-        <button onclick ="window.location ='{{ route('patients') }}'">Patients</button>
         <button onclick ="window.location ='{{ route('roster.new') }}'">New Roster</button>
         <button onclick ="window.location ='{{ route('doctor_appointment.create') }}'">Doctor Appt</button>
         <button onclick ="window.location ='{{ route('admin_report') }}'">Admin Report</button>
@@ -98,9 +97,9 @@
   
   <div class="outer-wrap">
     <div class="paper">
-      <h1 style="text-align: center;">Admin Home</h1>
+      <h1 style="text-align: center;">Supervisor Home</h1>
 
-      <p style="text-align: center;">Welcome, admin!</p>
+      <p style="text-align: center;">Welcome, supervisor!</p>
     </div>
   </div>
 
