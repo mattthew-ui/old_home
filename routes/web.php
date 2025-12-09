@@ -13,6 +13,15 @@ use App\Http\Controllers\EmployeeList;
 use App\Http\Controllers\RoleCreation;
 use App\Http\Controllers\New_Roster;
 use App\Http\Controllers\Doctor_Appointment;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+
+Route::get('/register', [RegisterController::class, 'showForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/login', [LoginController::class, 'showForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/daily-roster', [RosterController::class, 'dailyRoster']);
 
@@ -79,3 +88,8 @@ Route::get('/doctor-appointment/get-doctors', [Doctor_Appointment::class, 'getDo
 
     Route::get('/doctor-appointment/validate_patient', [Doctor_Appointment::class, 'validatePatient'])
     ->name('doctor_appointment.validate_patient');
+
+Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
+Route::post('/payment/search', [PaymentController::class, 'search'])->name('payment.search');
+Route::post('/payment/update-bill', [PaymentController::class, 'updateBill'])->name('payment.updateBill');
+Route::post('/payment/new-payment', [PaymentController::class, 'newPayment'])->name('payment.newPayment');
