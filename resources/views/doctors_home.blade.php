@@ -121,7 +121,7 @@
     <div class="header-buttons">
       <button onclick ="window.location ='{{ route('roster.daily') }}'">Daily Roster</button>
         <button onclick ="window.location ='{{ route('patients') }}'">Patients</button>
-        <button onclick ="window.location ='{{ route('admin_report') }}'">LOG OUT</button>
+        <button onclick ="window.location ='{{ route('home') }}'">LOG OUT</button>
     </div>
   </header>
 
